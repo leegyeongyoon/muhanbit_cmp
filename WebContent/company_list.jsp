@@ -7,6 +7,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+	@media only screen and (max-width : 1200px) {
+		#insert_btn1, #insert_btn2{
+			width: 100% !important;
+			display : table !important;
+		}
+	}
+</style>
+<script>
+
+$(document).ready(function(){
+    $("#insert_btn1").click(function(){
+       if($("input[name=delete_check]").prop("checked")){
+          $("input[name=delete_check]").prop("checked",false);
+        }else{
+            $("input[name=delete_check]").prop("checked",true);
+           }
+       });
+    })
+    
+</script>
 </head>
 <div class="page_header">
 		<div class="page_header_parallax">
@@ -69,12 +91,9 @@
 						}
 						%>
 							</tbody>
-							<tr>
-								<td>
-									<input type="button" onclick="delete_com()" value="ddd">
-								</td>
-							</tr>
 						</table>
+						<input id = "insert_btn1" class="button btn-lg" value="체크박스 전체 선책" type="button" style = "font-size : 15px; display:inline; width: 49.8%;">
+						<input id = "insert_btn2" class="button btn-lg" value="체크 항목 삭제" type="button" style = "font-size : 15px; display:inline; width: 49.8%;" onclick="delete_com()">
 						</form>
 					</div>
 				</div>
