@@ -4,6 +4,7 @@ import java.util.List;
 
 import Maintenance.MaintenanceDAO;
 import Maintenance.Maintenancebean;
+import company.companybean;
 
 
 
@@ -14,7 +15,7 @@ public class Maintenance_service {
 		maintenancedao = MaintenanceDAO.getInstance();
 	}
 
-	public boolean Maintenance_insert(String sort,String type,String ca_title,String com_name,String op,String content,String other) {
+	public boolean Maintenance_insert(String sort,String type,String ca_title,String com_name,String op,String content,String other,String go_date) {
 			try{
 				    
 				Maintenancebean maintenancebean = new Maintenancebean();
@@ -26,6 +27,7 @@ public class Maintenance_service {
 				maintenancebean.setOp(op);
 				maintenancebean.setContent(content);
 				maintenancebean.setOther(other);
+				maintenancebean.setGo_date(go_date);
 				maintenancedao.insert_Maintenance(maintenancebean);
 			return true;
 			}
@@ -33,6 +35,12 @@ public class Maintenance_service {
 				return false;
 			}
 	}
+	
+	public List<Maintenancebean> getMaintenanceList() {
+		return maintenancedao.selectMaintenanceList();
+	}
+
+
 
 	
 	

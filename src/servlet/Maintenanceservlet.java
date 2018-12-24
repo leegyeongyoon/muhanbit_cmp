@@ -64,7 +64,7 @@ public class Maintenanceservlet extends HttpServlet {
 		String reqUri = request.getRequestURI();
 		
 	
-
+		
 		if (reqUri.equals(contextPath + "/mainten_insert.ma")) {
 			String sort = request.getParameter("sort").trim();
 			String type = request.getParameter("type").trim();
@@ -73,19 +73,28 @@ public class Maintenanceservlet extends HttpServlet {
 			String op = request.getParameter("op").trim();
 			String content = request.getParameter("content").trim();
 			String other = request.getParameter("other").trim();
+			String go_date = request.getParameter("go_date").trim();
 			
 
-			if (service.Maintenance_insert(sort, type,ca_title,com_name,op,content,other)) {
-				out.println("<script>alert('유지보수 등록 등록 성공'); location.href='company_list.co'</script>");
+			if (service.Maintenance_insert(sort, type,ca_title,com_name,op,content,other,go_date)) {
+				out.println("<script>alert('유지보수 등록 등록 성공'); location.href='Maintenance_list.ma'</script>");
 
 			} else {
-				out.println("<script>alert('유지보수 등록  실패'); location.href='mainten_insert_page.ma'</script>");
+				out.println("<script>alert('유지보수 등록  실패'); location.href='Maintenance_insert_page.ma'</script>");
 
 			}
 		}
-		else if (reqUri.equals(contextPath + "/mainten_insert_page.ma")) {
+		else if (reqUri.equals(contextPath + "/Maintenance_insert_page.ma")) {
 				
-			request.getRequestDispatcher("index.jsp?section=company_insert.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp?section=Maintenance_insert.jsp").forward(request, response);
+
+		}
+		
+		else if (reqUri.equals(contextPath + "/Maintenance_list.ma")) {
+			
+				 request.setAttribute("maintenanceList", service.getMaintenanceList());
+				
+			request.getRequestDispatcher("index.jsp?section=Maintenance_list.jsp").forward(request, response);
 
 		}
 		

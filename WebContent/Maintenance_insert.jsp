@@ -128,7 +128,14 @@
 			<td>비고</td>
 			<td><input type="text" name="other"></td>
 		</tr>
+		
 		<tr>
+			<td>날짜</td>
+			<td><input type="date" name="go_date"></td>
+		</tr>
+		<tr>
+		
+		
 			<td><input type="submit" value="등록"><input type="button" value="취소"></td>
 		
 		</tr>

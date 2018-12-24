@@ -40,7 +40,7 @@ public class MaintenanceDAO {
 	}
 
 	public void insert_Maintenance(Maintenancebean maintenancebean) {
-		String sql = "INSERT INTO customer_list_tbl(fk_ca_seq,customer,type,op,content,other) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO customer_list_tbl(fk_ca_seq,customer,type,op,content,other,go_date) VALUES (?,?,?,?,?,?)";
 		try {
 			System.out.println(maintenancebean.getFk_ca_seq());
 			pstmt = conn.prepareStatement(sql);
@@ -50,6 +50,7 @@ public class MaintenanceDAO {
 			pstmt.setString(4, maintenancebean.getOp());
 			pstmt.setString(5, maintenancebean.getContent());
 			pstmt.setString(6, maintenancebean.getOther());
+			pstmt.setString(7, maintenancebean.getGo_date());
 			pstmt.executeUpdate();
 				
 		} catch (Exception e) {
@@ -99,4 +100,44 @@ public class MaintenanceDAO {
 
 	}
 
+	
+	public List<Maintenancebean> selectMaintenanceList() {
+		String sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date  from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq ";
+		List<Maintenancebean> MaintenanceList = new ArrayList<Maintenancebean>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Maintenancebean maintenancebean = new Maintenancebean();
+				maintenancebean.setSort(rs.getString(1));
+				maintenancebean.setCa_title(rs.getString(2));
+				maintenancebean.setCom_name(rs.getString(3));
+				maintenancebean.setType(rs.getString(4));
+				maintenancebean.setOp(rs.getString(5));
+				maintenancebean.setContent(rs.getString(6));
+				maintenancebean.setOther(rs.getString(7));
+				maintenancebean.setGo_date(rs.getString(8));
+				MaintenanceList.add(maintenancebean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null && !pstmt.isClosed()) {
+					pstmt.close();
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				// TODO: handle exception
+			}
+		}
+		return MaintenanceList;
+
+	}
+	
+	
+	
+	
 }

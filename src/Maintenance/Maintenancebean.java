@@ -8,6 +8,14 @@ public class Maintenancebean {
 	private String op;
 	private String content;
 	private String other;
+	private String go_date;
+	
+	public String getGo_date() {
+		return go_date;
+	}
+	public void setGo_date(String go_date) {
+		this.go_date = go_date;
+	}
 	private int fk_ca_seq;
 	public int getFk_ca_seq() {
 		return fk_ca_seq;//¡÷ºÆ
