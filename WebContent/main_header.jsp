@@ -30,10 +30,11 @@
 							</a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="company_insert_page.co">고객사 등록</a></li>
-									<li><a href="company_list.co">고객사 관리</a></li>
 									<li><a href="state_insert_page.do">작업 제목 등록</a></li>
-									<li><a href="state_delete_page.do">작업 제목 관리</a></li>
 									<li><a href="Maintenance_insert_page.ma">유지보수 등록</a></li>
+									<li><a href="company_list.co">고객사 관리</a></li>
+									<li><a href="state_delete_page.do">작업 제목 관리</a></li>
+									
 								</ul></li>
 							<li class="dropdown"><a href="#" data-toggle="dropdown"
 								class="dropdown-toggle"> 유지보수 현황 보기
