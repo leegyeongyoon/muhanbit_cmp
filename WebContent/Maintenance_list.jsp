@@ -36,8 +36,8 @@ $(document).ready(function(){
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h3>유지보수 현황 관리</h3>
-						<h4>고객사 관리</h4>
+						<h3>유지보수 현황 보기</h3>
+						<h4>전체 보기</h4>
 					</div>
 				</div>
 			</div>
@@ -47,8 +47,8 @@ $(document).ready(function(){
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="bcrumbs">
-							<li>유지보수 현황 관리</a></li>
-							<li>고객사 관리</li>
+							<li>유지보수 현황 보기</a></li>
+							<li>전체 보기</li>
 						</ul>
 						<div class="clearfix"></div>
 					</div>
@@ -60,7 +60,7 @@ $(document).ready(function(){
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 double-space-bottom">
-					<h2 class="heading space30">고객사 정보</h2>
+					<h2 class="heading space30">전체 유지보수 현황</h2>
 					<div class="space-top">
 					<form action="company_delete.co" method="post" name="com_del_form">
 						<table class="table">

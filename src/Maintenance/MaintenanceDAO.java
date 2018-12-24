@@ -40,7 +40,7 @@ public class MaintenanceDAO {
 	}
 
 	public void insert_Maintenance(Maintenancebean maintenancebean) {
-		String sql = "INSERT INTO customer_list_tbl(fk_ca_seq,customer,type,op,content,other,go_date) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO customer_list_tbl(fk_ca_seq,customer,type,op,content,other,go_date) VALUES (?,?,?,?,?,?,?)";
 		try {
 			System.out.println(maintenancebean.getFk_ca_seq());
 			pstmt = conn.prepareStatement(sql);
