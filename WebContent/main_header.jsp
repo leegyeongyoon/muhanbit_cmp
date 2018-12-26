@@ -43,7 +43,7 @@
 									</div>
 							</a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="index.jsp?section=table.jsp">고객사별 보기</a></li>
+									<li><a href="Maintenance_company_list.co">고객사별 보기</a></li>
 									<li><a href="Maintenance_list.ma">전체 보기</a></li>
 								</ul></li>
 							<li class="dropdown"><a href="#"> 데이터 백업 </a></li>

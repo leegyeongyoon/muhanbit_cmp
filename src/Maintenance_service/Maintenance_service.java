@@ -39,6 +39,13 @@ public class Maintenance_service {
 	public List<Maintenancebean> getMaintenanceList() {
 		return maintenancedao.selectMaintenanceList();
 	}
+	
+	public List<Maintenancebean> getMaintenance_select_List(String select_company) {
+		Maintenancebean maintenancebean = new Maintenancebean();
+		maintenancebean.setCom_name(select_company);
+
+		return maintenancedao.selectMaintenanceList_where(maintenancebean);
+	}
 
 
 

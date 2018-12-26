@@ -138,6 +138,70 @@ public class MaintenanceDAO {
 	}
 	
 	
-	
-	
+	public List<Maintenancebean> selectMaintenanceList_where(Maintenancebean maintenancebean) {
+		String sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date  from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq  where customer = ?";
+		int request=0 , progress=0 , Complet=0 , visit=0 , remote=0,flowing_line=0,mail=0,monthly_Inspection=0,branch_Inspection=0,remote_Inspection=0,neww=0,add=0;
+		List<Maintenancebean> MaintenanceList = new ArrayList<Maintenancebean>();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, maintenancebean.getCom_name());
+			rs = pstmt.executeQuery();
+			rs.last();
+			rs.getRow();
+			int num = rs.getRow();
+			rs = pstmt.executeQuery();
+			while (rs.next() ) {
+				num = num-1;
+				switch(rs.getString(4)) {
+				case "요청":request++; 				break;
+				case "진행":progress++; 				break;
+				case "완료":Complet++; 				break;
+				case "방문":visit++; 					break;
+				case "원격":remote++; 				break;
+				case "유선":flowing_line++; 			break;
+				case "메일":mail++; 					break;
+				case "매월점검":monthly_Inspection++;	break;
+				case "분기점검":branch_Inspection++;  break;
+				case "원격점검":remote_Inspection++; 	break;
+				case "신규":neww++; 					break;
+				case "추가":add++; 					break;
+			}
+				Maintenancebean maintenancebean1 = new Maintenancebean();
+				maintenancebean1.setSort(rs.getString(1));
+				maintenancebean1.setCa_title(rs.getString(2));
+				maintenancebean1.setCom_name(rs.getString(3));
+				maintenancebean1.setType(rs.getString(4));
+				maintenancebean1.setOp(rs.getString(5));
+				maintenancebean1.setContent(rs.getString(6));
+				maintenancebean1.setOther(rs.getString(7));
+				maintenancebean1.setGo_date(rs.getString(8));
+				
+				maintenancebean1.setRequest(request);
+				maintenancebean1.setProgress(progress);
+				maintenancebean1.setComplet(Complet);
+				maintenancebean1.setVisit(visit);
+				maintenancebean1.setRemote(remote);
+				maintenancebean1.setFlowing_line(flowing_line);
+				maintenancebean1.setMail(mail);
+				maintenancebean1.setMonthly_Inspection(monthly_Inspection);
+				maintenancebean1.setBranch_Inspection(branch_Inspection);
+				maintenancebean1.setRemote_Inspection(remote_Inspection);
+				maintenancebean1.setNeww(neww);
+				maintenancebean1.setAdd(add);		
+				MaintenanceList.add(maintenancebean1);
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null && !pstmt.isClosed()) {
+					pstmt.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				// TODO: handle exception
+			}
+		}
+		return MaintenanceList;
+	}
 }

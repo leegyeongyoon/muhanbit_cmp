@@ -63,7 +63,7 @@ public class Maintenanceservlet extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String reqUri = request.getRequestURI();
 		
-	
+		
 		
 		if (reqUri.equals(contextPath + "/mainten_insert.ma")) {
 			String sort = request.getParameter("sort").trim();
@@ -98,7 +98,13 @@ public class Maintenanceservlet extends HttpServlet {
 
 		}
 		
-		
+		else if (reqUri.equals(contextPath + "/Maintenance_select_list.ma")) {
+		 String select_company = request.getParameter("company");
+		 request.setAttribute("maintenance_select_List", service.getMaintenance_select_List(select_company));
+		request.getRequestDispatcher("Maintenance_select_list.jsp").forward(request, response);
+
+	}
+
 	
 	}
 }

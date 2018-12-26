@@ -91,6 +91,12 @@ public class customerservlet extends HttpServlet {
 			
 		}
 		
+		else if (reqUri.equals(contextPath + "/Maintenance_company_list.co")) {
+			 request.setAttribute("companyList", service.getcompanyList());
+           request.getRequestDispatcher("Maintenance_company_select.jsp").forward(request, response);
+			
+		}
+		
 		else if (reqUri.equals(contextPath + "/company_update.co")) {
 			
 			String name = request.getParameter("name").trim();

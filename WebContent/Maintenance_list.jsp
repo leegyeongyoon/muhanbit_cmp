@@ -78,6 +78,7 @@ $(document).ready(function(){
 							<tbody>
 						<% List<Maintenancebean> maintenancebean = (List<Maintenancebean>) request.getAttribute("maintenanceList"); %>
 						<% for(Maintenancebean m : maintenancebean){
+						
 						%>
 							<tr>
 								<td><%=m.getGo_date() %></td>
