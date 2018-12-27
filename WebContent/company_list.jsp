@@ -46,7 +46,7 @@ $(document).ready(function(){
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="bcrumbs">
-							<li>유지보수 현황 관리</a></li>
+							<li>유지보수 현황 관리</li>
 							<li>고객사 관리</li>
 						</ul>
 						<div class="clearfix"></div>
@@ -65,12 +65,12 @@ $(document).ready(function(){
 						<table class="table">
 							<thead>
 								<tr>
+									<th>체크박스</th>
 									<th>고객사 명</th>
 									<th>고객사 주소</th>
 									<th>담당자</th>
 									<th>담당자 연락처</th>
 									<th>담당자 이메일</th>
-									<th>삭제</th>
 								</tr>
 							</thead>
 							<tbody>

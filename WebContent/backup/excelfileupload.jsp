@@ -51,10 +51,10 @@ a {
                      
                 Thread.sleep(1000);
                  Class.forName("com.mysql.jdbc.Driver");
-                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory_control_muhanbit_db",
+                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cmp",
                        "root", "muhanbit");
                  
-                 String inventorystatesql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date    OUTFILE 'C:/Temp/Maintenance_list.csv' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n'   from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq ";
+                 String inventorystatesql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date  INTO  OUTFILE 'C:/Temp/Maintenance_list.csv' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n'   from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq ";
                  String inventorylistsql = "SELECT * INTO OUTFILE 'C:/Temp/category_list.csv' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n' FROM category_tbl";
                 
                 
