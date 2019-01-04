@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<table>
 	<tr>
 		<th>기간</th>
 		<th>구분</th>
@@ -56,7 +58,7 @@
 
 		}
 	%>
-
+</table>
 	<div>
 	<b>구분 : <%=requestt+progress+Complet %></b><br>
 	요청 : <%=requestt%><br>	

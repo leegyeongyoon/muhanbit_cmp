@@ -25,18 +25,8 @@
 						
 						</select>
 						
+						<div id="name_select"></div>
 						
-						<table id="name_select">
-							<tr>
-								<th>기간</th>
-								<th>구분</th>
-								<th>타입</th>
-								<th>작업제목</th>
-								<th>작업내용</th>
-								<th>작업자</th>
-								<th>비고</th>
-							</tr>
-						</table>
 						
 						
 		<script>

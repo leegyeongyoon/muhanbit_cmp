@@ -13,7 +13,7 @@
 
 	String cmdline = "mysqldump -u root -pmuhanbit cmp >dump.txt";
 	Process exec = Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c",
-			"mysqldump -u root -pmuhanbit cmp --default-character-set utf8 > C:/cmpdump.txt"});
+			"mysqldump -u root -pmuhanbit cmp --default-character-set utf8 > C://cmpdump.txt"});
 
 	// form 태그에서 <input type="file" name="여기에 지정한 이름" />을 가져온다.
 	String file1 = "C:/cmpdump.txt"; // 파일 input에 지정한 이름을 가져옴
