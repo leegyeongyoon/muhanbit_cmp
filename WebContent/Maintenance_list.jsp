@@ -47,7 +47,7 @@ $(document).ready(function(){
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="bcrumbs">
-							<li>유지보수 현황 보기</a></li>
+							<li>유지보수 현황 보기</li>
 							<li>전체 보기</li>
 						</ul>
 						<div class="clearfix"></div>

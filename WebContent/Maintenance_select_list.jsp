@@ -10,7 +10,8 @@
 </head>
 <body>
 
-<table>
+<table class="table">
+	<thead>
 	<tr>
 		<th>기간</th>
 		<th>구분</th>
@@ -20,15 +21,16 @@
 		<th>작업자</th>
 		<th>비고</th>
 	</tr>
+	</thead>
 	<%
-		List<Maintenancebean> maintenancebean = (List<Maintenancebean>) request
-				.getAttribute("maintenance_select_List");
+		List<Maintenancebean> maintenancebean = (List<Maintenancebean>) request.getAttribute("maintenance_select_List");
 		int requestt = 0, progress = 0, Complet = 0, visit = 0, remote = 0, flowing_line = 0, mail = 0,
 				monthly_Inspection = 0, branch_Inspection = 0, remote_Inspection = 0, neww = 0, add = 0;
 	%>
 	<%
 		for (Maintenancebean m : maintenancebean) {
 	%>
+	<tbody>
 	<tr>
 		<td><%=m.getGo_date()%></td>
 		<td><%=m.getSort()%></td>
@@ -39,7 +41,7 @@
 		<td><%=m.getOther()%></td>
 	</tr>
 
-
+	</tbody>
 	<%
 		requestt = 				m.getRequest();
 		progress = 				m.getProgress();
@@ -58,32 +60,73 @@
 
 		}
 	%>
-</table>
-	<div>
-	<b>구분 : <%=requestt+progress+Complet %></b><br>
-	요청 : <%=requestt%><br>	
-	진행 : <%=progress%><br>
-	완료 : <%=Complet%><br>
-	<hr>
-	<b>percall : <%=visit+remote+flowing_line+mail %></b><br>
-	방문 : <%=visit%><br>
-	원격 : <%=remote%><br>
-	유선 : <%=flowing_line%><br>
-	메일 : <%=mail%><br>
-	<hr>
-	<b>정기점검 : <%=monthly_Inspection+branch_Inspection+remote_Inspection %></b><br>
-	매월점검 :<%=monthly_Inspection%><br>
-	분기 점검 :<%=branch_Inspection%><br>
-	원격점검 : <%=remote_Inspection%><br>
-	<hr>
-	<b>구축 : <%=neww+add %></b>
-	신규 : <%=neww%><br>
-	추가 : <%=add%><br>
-</div>
-
-
-
-
-
+	</table>
+	<div class="space30" ></div>
+		<table class="table table-bordered" style="position: absolute; width: 15%; right: -160px;bottom: -280px; font-weight: bold;">
+				<tr style="background-color: #9b9b9b">
+					<td>장애</td>
+					<td><%=requestt+progress+Complet %>건</td>
+				</tr>
+				<tr style="background-color: #d3d3d3">
+                    <td>요청</td>
+                    <td><%=requestt %>건</td>
+                </tr>
+                <tr style="background-color: #d3d3d3">
+                    <td>진행</td>
+                    <td><%=progress %>건</td>
+                </tr>
+                <tr style="background-color: #d3d3d3">
+                    <td>완료</td>
+                    <td><%=Complet %>건</td>
+                </tr>
+                <tr style="background-color: #8fbdef">
+                    <td>percall</td>
+                    <td><%=visit+remote+flowing_line+mail %>건</td>
+                </tr>
+                <tr style="background-color: #cfdfff">
+                    <td>방문</td>
+                    <td><%=visit %>건</td>
+                </tr>
+                <tr style="background-color: #cfdfff">
+                    <td>원격</td>
+                    <td><%=remote %>건</td>
+                </tr>
+                <tr style="background-color: #cfdfff">
+                    <td>유선</td>
+                    <td><%=flowing_line %>건</td>
+                </tr>
+                <tr style="background-color: #cfdfff">
+                    <td>메일</td>
+                    <td><%=mail %>건</td>
+                </tr>
+                <tr style="background-color: #f7eb64">
+                    <td>정기점검</td>
+                    <td><%=monthly_Inspection+branch_Inspection+remote_Inspection %>건</td>
+                </tr>
+                <tr style="background-color: #f9f6bb">
+                    <td>매월점검</td>
+                    <td><%=monthly_Inspection %>건</td>
+                </tr>
+                <tr style="background-color: #f9f6bb">
+                    <td>분기점검</td>
+                    <td><%=branch_Inspection %>건</td>
+                </tr>
+                <tr style="background-color: #f9f6bb">
+                    <td>원격점검</td>
+                    <td><%=remote_Inspection %>건</td>
+                </tr>
+                <tr style="background-color: #a6e2aa">
+                    <td>구축</td>
+                    <td><%=neww+add %>건</td>
+                </tr>
+                <tr style="background-color: #ddf5d6">
+                    <td>신규</td>
+                    <td><%=neww %>건</td>
+                </tr>
+                <tr style="background-color: #ddf5d6">
+                    <td>추가</td>	
+					<td><%=add %>건</td>		
+				</tr>
+	</table>
 </body>
 </html>
