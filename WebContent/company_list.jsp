@@ -15,6 +15,23 @@
 			display : table !important;
 		}
 	}
+	
+	.paging li {
+		display: inline-block;
+		border: 1px solid #006bb7;
+		border-radius : 3px;
+		padding: 3px 10px;
+		margin-top: 15px;
+		
+	}
+	
+	.paging li:hover {
+		background-color: #dbf0ff;
+	}
+	
+	.paging li a {
+		font-size: 18px;
+	}
 </style>
 <script>
 
@@ -92,16 +109,24 @@ $(document).ready(function(){
 								<td><%=c.getManager() %></td>
 								<td><%=c.getPhone() %></td>
 								<td><%=c.getEmail() %></td>
-								
-							</tr>				
 						<%
 						 totalCount = c.getTotalCount();
 						 countList = c.getCountList();
 						 totalPage = c.getTotalPage();
 						 currentPage = c.getCurrentPage();
 						 countPage = c.getCountPage();
-						 
+						
 						}
+						%>		
+							</tr>				
+							</tbody>
+						</table>
+						<input id = "insert_btn1" class="button btn-lg" value="체크박스 전체 선책" type="button" style = "font-size : 15px; display:inline; width: 49.8%;">
+						<input id = "insert_btn2" class="button btn-lg" value="체크 항목 삭제" type="button" style = "font-size : 15px; display:inline; width: 49.8%;" onclick="delete_com()">
+						</form>
+						<ul class="paging" style="text-align: center;">
+											<%
+					
 						System.out.println(currentPage);
 						 int startPage = ((currentPage - 1) /5) * 5 + 1;
 				         int endPage = startPage + countPage - 1;
@@ -150,17 +175,7 @@ $(document).ready(function(){
 				         <%
 				            }
 				         %>
-				         
-				        
-						
-						
-						
-						
-							</tbody>
-						</table>
-						<input id = "insert_btn1" class="button btn-lg" value="체크박스 전체 선책" type="button" style = "font-size : 15px; display:inline; width: 49.8%;">
-						<input id = "insert_btn2" class="button btn-lg" value="체크 항목 삭제" type="button" style = "font-size : 15px; display:inline; width: 49.8%;" onclick="delete_com()">
-						</form>
+				     	</ul>	
 					</div>
 				</div>
 		</div>
