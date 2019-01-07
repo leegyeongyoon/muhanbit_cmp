@@ -62,7 +62,11 @@
 	%>
 	</table>
 	<div class="space30" ></div>
-		<table class="table table-bordered" style="position: absolute; width: 15%; right: -160px;bottom: -280px; font-weight: bold;">
+		<table class="table table-bordered" style="position: absolute; width: 17%; right: -160px;bottom: -280px; font-weight: bold;">
+				<tr style="background-color: gray;">
+					<td>구분</td>
+					<td>해당건수</td>
+				</tr>
 				<tr style="background-color: #9b9b9b">
 					<td>장애</td>
 					<td><%=requestt+progress+Complet %>건</td>
