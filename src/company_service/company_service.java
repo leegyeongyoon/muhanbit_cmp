@@ -27,6 +27,10 @@ public class company_service {
 		}
 	}
 
+	public List<companybean> getcompanyList(String currentPage) {
+		return companydao.selectAll(currentPage);
+	}
+	
 	public List<companybean> getcompanyList() {
 		return companydao.selectAll();
 	}

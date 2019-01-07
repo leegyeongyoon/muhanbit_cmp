@@ -86,7 +86,8 @@ public class customerservlet extends HttpServlet {
 		}
 		
 		else if (reqUri.equals(contextPath + "/company_list.co")) {
-			 request.setAttribute("companyList", service.getcompanyList());
+			String currentPage = request.getParameter("currentPage");
+			 request.setAttribute("companyList", service.getcompanyList(currentPage));
             request.getRequestDispatcher("index.jsp?section=company_list.jsp").forward(request, response);
 			
 		}

@@ -75,7 +75,14 @@ $(document).ready(function(){
 							</thead>
 							<tbody>
 						<% List<companybean> companybean = (List<companybean>) request.getAttribute("companyList"); %>
-						<% for(companybean c : companybean){
+						
+						<%
+						int totalCount=0;
+						int countList =0;
+						int totalPage =0;
+						int currentPage=0;
+						int countPage=0;
+						for(companybean c : companybean){
 
 						%>
 							<tr>
@@ -88,8 +95,67 @@ $(document).ready(function(){
 								
 							</tr>				
 						<%
+						 totalCount = c.getTotalCount();
+						 countList = c.getCountList();
+						 totalPage = c.getTotalPage();
+						 currentPage = c.getCurrentPage();
+						 countPage = c.getCountPage();
+						 
 						}
-						%>
+						System.out.println(currentPage);
+						 int startPage = ((currentPage - 1) /5) * 5 + 1;
+				         int endPage = startPage + countPage - 1;
+						
+						if(totalCount % countList > 0){
+				            totalPage++;
+				         }
+
+				         if(totalPage < currentPage){
+				            currentPage = totalPage;
+				         }
+
+				        
+
+				         if(endPage > totalPage){
+				            endPage = totalPage;
+				         }
+
+				         if(currentPage>=6){
+				         %>
+				            <li><a href="company_list.co?&currentPage=1">처음</a></li>
+				         <%
+				         }
+				         
+				         if(currentPage>5){
+				         %>
+				            <li><a href="company_list.co?currentPage=<%=startPage-countPage%>">이전</a></li>
+				         <%
+				         }
+				         
+				         for(int i = startPage; i <= endPage; i++){
+				        	
+				         %>
+				         <li><a href="company_list.co?currentPage=<%=i%>"><%=i%></a></li>
+				         <%
+				         }
+				         if(endPage!=totalPage){
+				         %>
+				         <li><a href="company_list.co?currentPage=<%=startPage+countPage%>">다음</a></li>
+				         <%
+				         }
+				         
+				         if(endPage!=totalPage){
+				         %>
+				         <li><a href="company_list.co?currentPage=<%=totalPage%>">끝</a></li>
+				         <%
+				            }
+				         %>
+				         
+				        
+						
+						
+						
+						
 							</tbody>
 						</table>
 						<input id = "insert_btn1" class="button btn-lg" value="체크박스 전체 선책" type="button" style = "font-size : 15px; display:inline; width: 49.8%;">
@@ -100,6 +166,10 @@ $(document).ready(function(){
 		</div>
 	</div>
 	</div>
+	
+	    
+        
+         
 	<script type="text/javascript">
 		function delete_com(){
 			var del_chk = document.getElementsByName("delete_check");

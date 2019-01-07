@@ -46,4 +46,48 @@ public class companybean {
 		this.del_name = name;
 	}
 	
+
+	private int totalPage ;
+	private int countList;
+	private int totalCount;
+	private int currentPage;
+	
+	public int getCurrentPage() {
+		return currentPage;
+	}
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	private int countPage ;
+	public int getCountPage() {
+		return countPage;
+	}
+	public void setCountPage(int countPage) {
+		this.countPage = countPage;
+	}
+	public int getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+	
+	public int getCountList() {
+		return countList;
+	}
+	public void setCountList(int countList) {
+		this.countList = countList;
+	}
+
+	
+	
+	
+	
 }
