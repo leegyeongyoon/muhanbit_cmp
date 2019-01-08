@@ -18,6 +18,18 @@
 		display: table !important;
 	}
 }
+
+.search {
+	background-color: white;
+	border: 1px solid #00008b;
+	border-radius : 3px;
+	font-weight : bold;
+	padding: 10px 20px;
+}
+
+.search:hover {
+	background-color: #e3e3fc;
+}
 </style>
 <script>
 	$(document).ready(function() {
@@ -57,38 +69,35 @@
 			</div>
 		</div>
 	</div>
-
-	<select id="year" name="year">
-		<%
-			for (int i = 2010; i <= 2100; i++) {
-		%>
-		<option value="<%=i%>"><%=i%></option>
-		<%
-			}
-		%>
-	</select>
-	<select id="month" name="month">
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-		<option value="5">5</option>
-		<option value="6">6</option>
-		<option value="7">7</option>
-		<option value="8">8</option>
-		<option value="9">9</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-	</select>월
-	<input type="button" onclick="monthsel()" value="검색">
-
-
-	<div class="inner-content"
-		style="padding-top: 50px; padding-bottom: 450px;">
+	<div class="inner-content" style="padding-top: 50px; padding-bottom: 450px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 double-space-bottom">
+				<h3 class="heading">날짜 선택</h3>
+					<select id="year" name="year" class="form-control" style="height: 40px; padding: 0 20px; border: 1px solid darkblue; width: 100px; display: inline;">
+						<%
+							for (int i = 2010; i <= 2100; i++) {
+						%>
+						<option value="<%=i%>"><%=i%></option>
+						<%
+							}
+						%>
+					</select><span style="font-size: 20px; margin-right: 10px;">년</span>
+					<select id="month" name="month" class="form-control" style="height: 40px; padding: 0 20px; border: 1px solid darkblue; width: 100px; display: inline;">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select><span style="font-size: 20px; margin-right: 10px;">월</span>
+						<input type="button" onclick="monthsel()" value="검색" class="search">
 					<h2 class="heading space30">전체 유지보수 현황</h2>
 					<div class="space-top">
 						<form action="company_delete.co" method="post" name="com_del_form">
