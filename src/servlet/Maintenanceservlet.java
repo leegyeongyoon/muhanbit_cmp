@@ -91,10 +91,11 @@ public class Maintenanceservlet extends HttpServlet {
 		}
 		
 		else if (reqUri.equals(contextPath + "/Maintenance_list.ma")) {
-			
-				 request.setAttribute("maintenanceList", service.getMaintenanceList());
+				String year = request.getParameter("year");
+				String month = request.getParameter("month");
+				 request.setAttribute("maintenanceList", service.getMaintenanceList(year,month));
 				
-			request.getRequestDispatcher("index.jsp?section=Maintenance_list.jsp").forward(request, response);
+			request.getRequestDispatcher("Maintenance_list.jsp").forward(request, response);
 
 		}
 		
@@ -104,7 +105,13 @@ public class Maintenanceservlet extends HttpServlet {
 		request.getRequestDispatcher("Maintenance_select_list.jsp").forward(request, response);
 
 	}
+		
+		
+		else if (reqUri.equals(contextPath + "/Maintenance_list_page.ma")) {
+			
+			request.getRequestDispatcher("index.jsp?section=Maintenance_list_page.jsp").forward(request, response);
 
+		}
 	
 	}
 }
