@@ -101,12 +101,16 @@ public class MaintenanceDAO {
 	}
 
 	
-	public List<Maintenancebean> selectMaintenanceList() {
-		String sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date  from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq ";
+	public List<Maintenancebean> selectMaintenanceList(String year , String month) {
+		String date = year+"-"+month+"%";
+		System.out.println(date);
+		String sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date  from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq WHERE l.go_date LIKE ? ORDER BY l.go_date ASC";
 		List<Maintenancebean> MaintenanceList = new ArrayList<Maintenancebean>();
 		
 		try {
+		
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, date);	
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Maintenancebean maintenancebean = new Maintenancebean();

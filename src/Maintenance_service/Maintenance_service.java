@@ -36,8 +36,8 @@ public class Maintenance_service {
 			}
 	}
 	
-	public List<Maintenancebean> getMaintenanceList() {
-		return maintenancedao.selectMaintenanceList();
+	public List<Maintenancebean> getMaintenanceList(String year, String month) {
+		return maintenancedao.selectMaintenanceList(year , month);
 	}
 	
 	public List<Maintenancebean> getMaintenance_select_List(String select_company) {
