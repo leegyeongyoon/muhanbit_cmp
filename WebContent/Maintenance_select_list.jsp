@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+</style>
 </head>
 <body>
 
@@ -62,7 +65,7 @@
 	%>
 	</table>
 	<div class="space30" ></div>
-		<table class="table table-bordered" style="position: fixed; width: 8%; right: 450px;bottom: 40px; font-weight: bold;">
+		<table class="table table-bordered" style="position: fixed; width: 10%; right: 20%;bottom: 2%; font-weight: bold; font-size: 13px;" id="table2">
 				<tr style="background-color: gray;">
 					<td>구분</td>
 					<td>해당건수</td>
