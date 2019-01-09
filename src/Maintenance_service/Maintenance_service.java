@@ -36,16 +36,13 @@ public class Maintenance_service {
 			}
 	}
 	
-	public List<Maintenancebean> getMaintenanceList(String year, String month) {
-		return maintenancedao.selectMaintenanceList(year , month);
-	}
-	
-	public List<Maintenancebean> getMaintenance_select_List(String select_company) {
+	public List<Maintenancebean> getMaintenanceList(String year, String month, String select_company) {
 		Maintenancebean maintenancebean = new Maintenancebean();
 		maintenancebean.setCom_name(select_company);
-
-		return maintenancedao.selectMaintenanceList_where(maintenancebean);
+		return maintenancedao.selectMaintenanceList(year , month , maintenancebean);
 	}
+	
+
 
 
 

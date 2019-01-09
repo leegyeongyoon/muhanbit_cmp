@@ -93,18 +93,13 @@ public class Maintenanceservlet extends HttpServlet {
 		else if (reqUri.equals(contextPath + "/Maintenance_list.ma")) {
 				String year = request.getParameter("year");
 				String month = request.getParameter("month");
-				 request.setAttribute("maintenanceList", service.getMaintenanceList(year,month));
-				
-			request.getRequestDispatcher("Maintenance_list.jsp").forward(request, response);
+				String select_company = request.getParameter("company");
+				request.setAttribute("maintenanceList", service.getMaintenanceList(year,month,select_company));
+				request.getRequestDispatcher("Maintenance_list.jsp").forward(request, response);
 
 		}
 		
-		else if (reqUri.equals(contextPath + "/Maintenance_select_list.ma")) {
-		 String select_company = request.getParameter("company");
-		 request.setAttribute("maintenance_select_List", service.getMaintenance_select_List(select_company));
-		request.getRequestDispatcher("Maintenance_select_list.jsp").forward(request, response);
-
-	}
+		
 		
 		
 		else if (reqUri.equals(contextPath + "/Maintenance_list_page.ma")) {

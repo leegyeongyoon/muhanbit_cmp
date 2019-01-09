@@ -52,7 +52,7 @@ public class MaintenanceDAO {
 			pstmt.setString(6, maintenancebean.getOther());
 			pstmt.setString(7, maintenancebean.getGo_date());
 			pstmt.executeUpdate();
-				
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -100,76 +100,44 @@ public class MaintenanceDAO {
 
 	}
 
-	
-	public List<Maintenancebean> selectMaintenanceList(String year , String month) {
-		String date = year+"-"+month+"%";
-		System.out.println(date);
-		String sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date  from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq WHERE l.go_date LIKE ? ORDER BY l.go_date ASC";
+	public List<Maintenancebean> selectMaintenanceList(String year, String month, Maintenancebean maintenancebean) {
 		List<Maintenancebean> MaintenanceList = new ArrayList<Maintenancebean>();
-		
 		try {
-		
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, date);	
+			int request = 0, progress = 0, Complet = 0, visit = 0, remote = 0, flowing_line = 0, mail = 0,
+				monthly_Inspection = 0, branch_Inspection = 0, remote_Inspection = 0, neww = 0, add = 0;
+			String sql = "";
+			int i = 1;
+			String date = year + "-" + month + "%";
+			
+			if (maintenancebean.getCom_name() != null) {
+				sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date ,l.customer from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq  WHERE l.customer = ? AND l.go_date LIKE ? ORDER BY l.go_date ASC";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(i, maintenancebean.getCom_name());
+				i++;
+			} else {
+				sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date ,l.customer from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq WHERE l.go_date LIKE ? ORDER BY l.customer,l.go_date ASC";
+				pstmt = conn.prepareStatement(sql);
+			}
+			pstmt.setString(i, date);
+			System.out.println(pstmt);
 			rs = pstmt.executeQuery();
+			
 			while (rs.next()) {
-				Maintenancebean maintenancebean = new Maintenancebean();
-				maintenancebean.setSort(rs.getString(1));
-				maintenancebean.setCa_title(rs.getString(2));
-				maintenancebean.setCom_name(rs.getString(3));
-				maintenancebean.setType(rs.getString(4));
-				maintenancebean.setOp(rs.getString(5));
-				maintenancebean.setContent(rs.getString(6));
-				maintenancebean.setOther(rs.getString(7));
-				maintenancebean.setGo_date(rs.getString(8));
-				MaintenanceList.add(maintenancebean);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null && !pstmt.isClosed()) {
-					pstmt.close();
-
+			
+				switch (rs.getString(4)) {
+						case   "요청"    :    request++;      	        		break;
+						case   "진행"    :    progress++;     	        		break;
+						case   "완료"    :    Complet++;      	        		break;
+						case   "방문"    :    visit++;							break;
+						case   "원격"    :    remote++;				  			break;
+						case   "유선"    :    flowing_line++;						break;
+						case   "메일"    :    mail++;								break;
+						case   "매월점검" :    monthly_Inspection++;				break;
+						case   "분기점검" :    branch_Inspection++; 				break;
+						case   "원격점검" :    remote_Inspection++; 				break;
+						case   "신규"    :    neww++;								break;
+						case   "추가"    :    add++;								break;
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				// TODO: handle exception
-			}
-		}
-		return MaintenanceList;
-
-	}
-	
-	
-	public List<Maintenancebean> selectMaintenanceList_where(Maintenancebean maintenancebean) {
-		String sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date  from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq  where customer = ?";
-		int request=0 , progress=0 , Complet=0 , visit=0 , remote=0,flowing_line=0,mail=0,monthly_Inspection=0,branch_Inspection=0,remote_Inspection=0,neww=0,add=0;
-		List<Maintenancebean> MaintenanceList = new ArrayList<Maintenancebean>();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, maintenancebean.getCom_name());
-			rs = pstmt.executeQuery();
-			rs.last();
-			rs.getRow();
-			int num = rs.getRow();
-			rs = pstmt.executeQuery();
-			while (rs.next() ) {
-				num = num-1;
-				switch(rs.getString(4)) {
-				case "요청":request++; 				break;
-				case "진행":progress++; 				break;
-				case "완료":Complet++; 				break;
-				case "방문":visit++; 					break;
-				case "원격":remote++; 				break;
-				case "유선":flowing_line++; 			break;
-				case "메일":mail++; 					break;
-				case "매월점검":monthly_Inspection++;	break;
-				case "분기점검":branch_Inspection++;  break;
-				case "원격점검":remote_Inspection++; 	break;
-				case "신규":neww++; 					break;
-				case "추가":add++; 					break;
-			}
 				Maintenancebean maintenancebean1 = new Maintenancebean();
 				maintenancebean1.setSort(rs.getString(1));
 				maintenancebean1.setCa_title(rs.getString(2));
@@ -179,7 +147,8 @@ public class MaintenanceDAO {
 				maintenancebean1.setContent(rs.getString(6));
 				maintenancebean1.setOther(rs.getString(7));
 				maintenancebean1.setGo_date(rs.getString(8));
-				
+				maintenancebean1.setCom_name(rs.getString(9));
+
 				maintenancebean1.setRequest(request);
 				maintenancebean1.setProgress(progress);
 				maintenancebean1.setComplet(Complet);
@@ -191,9 +160,10 @@ public class MaintenanceDAO {
 				maintenancebean1.setBranch_Inspection(branch_Inspection);
 				maintenancebean1.setRemote_Inspection(remote_Inspection);
 				maintenancebean1.setNeww(neww);
-				maintenancebean1.setAdd(add);		
+				maintenancebean1.setAdd(add);
 				MaintenanceList.add(maintenancebean1);
-				}
+				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -208,4 +178,5 @@ public class MaintenanceDAO {
 		}
 		return MaintenanceList;
 	}
+
 }

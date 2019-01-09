@@ -62,7 +62,7 @@ $(document).ready(function(){
 				<div class="col-sm-9 double-space-bottom">
 					<h2 class="heading">고객사 선택</h2>
 					<div class="space-top">
-						<select class="form-control space20" id="select_company" name="select_company" onchange="select_list_data()" style="height: 50px; padding: 5 20px; border: 1px solid darkblue; width: 20%;">
+						<select class="form-control space20" id="select_company" name="select_company"  style="height: 50px; padding: 5 20px; border: 1px solid darkblue; width: 20%;">
 						<option></option>
 						<% List<companybean> companybean = (List<companybean>) request.getAttribute("companyList"); %>
 										<% for(companybean c : companybean){
@@ -76,13 +76,54 @@ $(document).ready(function(){
 										%>
 							
 						</select>
+							<select id="year" name="year" class="form-control" style="height: 40px; padding: 0 20px; border: 1px solid darkblue; width: 100px; display: inline;">
+						<%
+							for (int i = 2010; i <= 2100; i++) {
+						%>
+						<option value="<%=i%>"><%=i%></option>
+						<%
+							}
+						%>
+					</select><span style="font-size: 20px; margin-right: 10px;">년</span>
+					<select id="month" name="month" class="form-control" style="height: 40px; padding: 0 20px; border: 1px solid darkblue; width: 100px; display: inline;">
+						<option value="01">1</option>
+						<option value="02">2</option>
+						<option value="03">3</option>
+						<option value="04">4</option>
+						<option value="05">5</option>
+						<option value="06">6</option>
+						<option value="07">7</option>
+						<option value="08">8</option>
+						<option value="09">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select><span style="font-size: 20px; margin-right: 10px;">월</span>
+						<input type="button" onclick="select_list_data()" value="검색" class="search">
 						<div id="name_select"></div>
 						<script>
 		
 						function select_list_data(){
+							
+							var year = document.getElementById("year").value;
+							var month = document.getElementById("month").value;
+							var company = document.getElementById("select_company").value;
+							if (year == "" || month == ""|| company == "") {
+								if (year == "") {
+									alert('년도를 선택해주세요');
+								} else if (month == "") {
+									alert('월을 선택해주세요');
+								}
+								else{
+									alert('회사를 선택해주세요');
+								}
+								return false;
+							}
+							
+							else {
 					        var result = document.getElementById('name_select');
 					                $.ajax({
-					                    url : "Maintenance_select_list.ma?company="+document.getElementById("select_company").value ,// select_list_data.jsp 에서 받아옴
+					                    url : "Maintenance_list.ma?company="+company+"&year=" + year + "&month="+ month ,// select_list_data.jsp 에서 받아옴
 					                    dataType :"json", // 데이터타입을 json 으로 받아옴
 					                    success : function(data) {
 					                        result.innerHTML = data;
@@ -93,6 +134,7 @@ $(document).ready(function(){
 					                });
 								            
 								}	
+						}
 												
 						</script>
 					</div>

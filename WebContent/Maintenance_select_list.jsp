@@ -23,6 +23,7 @@
 		<th>작업내용</th>
 		<th>작업자</th>
 		<th>비고</th>
+		<th>회사명</th>
 	</tr>
 	</thead>
 	<%
@@ -42,6 +43,7 @@
 		<td><%=m.getContent()%></td>
 		<td><%=m.getOp()%></td>
 		<td><%=m.getOther()%></td>
+		<td><%=m.getCom_name() %></td>
 	</tr>
 
 	</tbody>
