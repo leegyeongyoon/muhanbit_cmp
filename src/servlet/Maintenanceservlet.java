@@ -77,7 +77,7 @@ public class Maintenanceservlet extends HttpServlet {
 			
 
 			if (service.Maintenance_insert(sort, type,ca_title,com_name,op,content,other,go_date)) {
-				out.println("<script>alert('유지보수 등록 등록 성공'); location.href='Maintenance_list.ma'</script>");
+				out.println("<script>alert('유지보수 등록 등록 성공'); location.href='Maintenance_list_page.ma'</script>");
 
 			} else {
 				out.println("<script>alert('유지보수 등록  실패'); location.href='Maintenance_insert_page.ma'</script>");
