@@ -12,9 +12,16 @@
 <style>
 	@media only screen and (max-width : 1200px) {
 		#table2{
+			left : 750px !important;
+		}
+	}
+	
+	@media only screen and (max-width : 992px) {
+		#table2{
 			display : none !important;
 		}
 	}
+	
 	
 	.search {
 	background-color: white;
