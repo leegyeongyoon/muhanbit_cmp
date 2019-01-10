@@ -15,7 +15,7 @@
 		<th>작업 내용</th>
 		<th>작업자</th>
 		<th>비고</th>
-		<th>회사명</th>
+		<th>고객사 명</th>
 	</tr>
 	</thead>
 	<% List<Maintenancebean> maintenancebean = (List<Maintenancebean>) request.getAttribute("maintenanceList");

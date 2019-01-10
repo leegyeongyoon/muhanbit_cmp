@@ -20,7 +20,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h3>유지보수 현황관리</h3>
+						<h3>유지보수 현황 관리</h3>
 						<h4>고객사 등록</h4>
 					</div>
 				</div>
@@ -31,7 +31,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="bcrumbs">
-							<li>유지보수 현황 관리</a></li>
+							<li>유지보수 현황 관리</li>
 							<li>고객사 등록</li>
 						</ul>
 						<div class="clearfix"></div>
