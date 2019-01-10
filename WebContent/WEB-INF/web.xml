@@ -23,7 +23,6 @@
     <servlet-name>cmpservlet</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>customerservlet</servlet-name>
     <servlet-class>servlet.customerservlet</servlet-class>
@@ -32,8 +31,6 @@
     <servlet-name>customerservlet</servlet-name>
     <url-pattern>*.co</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>Maintenanceservlet</servlet-name>
     <servlet-class>servlet.Maintenanceservlet</servlet-class>
@@ -41,5 +38,13 @@
   <servlet-mapping>
     <servlet-name>Maintenanceservlet</servlet-name>
     <url-pattern>*.ma</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>searchservlet</servlet-name>
+    <servlet-class>servlet.searchservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchservlet</servlet-name>
+    <url-pattern>*.se</url-pattern>
   </servlet-mapping>
 </web-app>
