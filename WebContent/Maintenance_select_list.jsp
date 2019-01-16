@@ -76,6 +76,7 @@
 					<td>장애</td>
 					<td><%=requestt+progress+Complet %>건</td>
 				</tr>
+				
 				<tr style="background-color: #d3d3d3">
                     <td>요청</td>
                     <td><%=requestt %>건</td>
@@ -137,5 +138,9 @@
 					<td><%=add %>건</td>		
 				</tr>
 	</table>
+	
+	<select>
+					<option id="ddd">ddd</option>
+				</select>
 </body>
 </html>

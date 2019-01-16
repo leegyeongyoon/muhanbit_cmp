@@ -16,7 +16,7 @@
 <script>
 	function search_first_selete() {
 		var category_select = document.getElementById("category_select").value;
-		if(category_select == "1"){
+		if(category_select == "cus_info"){
 			document.getElementById("list_select").innerHTML = "<option value='0'></option>"
 			+"<option value='name'>고객사 이름</option>"
 			+"<option value='manager'>담당자</option>"
@@ -24,7 +24,7 @@
 			+"<option value='email'>담당자 이메일</option>"
 			+"<option value='address'>고객사 주소</option>";
 												
-		}else if(category_select == "2"){
+		}else if(category_select == "Main_info"){
 			document.getElementById("list_select").innerHTML = "<option value='0'></option>"
 				+"<option value='go_date'>날짜</option>"
 				+"<option value='sort'>구분</option>"
@@ -86,6 +86,7 @@
 			</div>
 		</div>
 		</div>
+		<form action="search_form_ok.se" method="get">
 			<div class="inner-content">
 		<div class="search-container">
 			<div class="container">
@@ -96,11 +97,11 @@
 						<h3 class="heading">카테고리 선택</h3>
 							<select class="form-control" id="category_select" name="sort" style="height: 60px; padding: 0 20px; border: 1px solid darkblue;" onchange="search_first_selete()">
 								<option value="0"></option>
-								<option value="1">고객사 정보</option>
-								<option value="2">유지보수 정보</option>
+								<option value="cus_info">고객사 정보</option>
+								<option value="Main_info">유지보수 정보</option>
 							</select>
 						<h3 class="heading">항목 선택</h3>
-							<select class="form-control" id="list_select" name="sort" style="height: 60px; padding: 0 20px; border: 1px solid darkblue;" onchange="search_data_selete()">
+							<select class="form-control" id="list_select" name="title" style="height: 60px; padding: 0 20px; border: 1px solid darkblue;" onchange="search_data_selete()">
 								
 							</select>
 						</div>
@@ -113,5 +114,6 @@
 			</div>
 		</div>
 	</div>
+	</form>
 </body>
 </html>
