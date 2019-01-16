@@ -19,6 +19,17 @@
 	}
 }
 
+@media only screen and (max-width : 1199px) {
+	#table2{
+		left: 800px !important;
+	}
+}
+
+@media only screen and (max-width : 991px) {
+	#table2{
+		display: none !important;
+	}
+}
 .search {
 	background-color: white;
 	border: 1px solid #00008b;
@@ -72,7 +83,7 @@
 	<div class="inner-content" style="padding-top: 50px; padding-bottom: 450px;">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12 double-space-bottom">
+				<div class="col-sm-9 double-space-bottom">
 				<h3 class="heading">날짜 선택</h3>
 					<select id="year" name="year" class="form-control" style="height: 40px; padding: 0 20px; border: 1px solid darkblue; width: 100px; display: inline;">
 						<%
@@ -109,10 +120,10 @@
 							
 							<input id="insert_btn1" class="button btn-lg" value="체크박스 전체 선책"
 								type="button"
-								style="font-size: 15px; display: inline; width: 49.8%;">
+								style="font-size: 15px; display: inline; width: 49.7%;">
 							<input id="insert_btn2" class="button btn-lg" value="체크 항목 삭제"
 								type="button"
-								style="font-size: 15px; display: inline; width: 49.8%;"
+								style="font-size: 15px; display: inline; width: 49.7%;"
 								onclick="delete_com()">
 						</form>
 					</div>

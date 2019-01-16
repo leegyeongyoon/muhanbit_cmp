@@ -67,7 +67,7 @@
 	%>
 	</table>
 	<div class="space30" ></div>
-		<table class="table table-bordered" style="position: fixed; width: 10%; right: 20%;bottom: 2%; font-weight: bold; font-size: 13px;" id="table2">
+		<table class="table table-bordered" style="position: absolute; width: 150px; left: 900px;top : 0px;font-weight: bold; font-size: 13px;" id="table2">
 				<tr style="background-color: gray;">
 					<td>구분</td>
 					<td>해당건수</td>
