@@ -47,7 +47,7 @@
 									<li><a href="Maintenance_list_page.ma">전체 보기</a></li>
 								</ul></li>
 							<li class="dropdown"><a href="#"> 데이터 백업 </a></li>
-							<li class="dropdown"><a href="search_form.se"> 유지보수 현황 검색 </a></li>
+							<li class="dropdown"><a href="search_form.se">정보 검색 </a></li>
 						</ul>
 					</div>
 				</div>

@@ -4,12 +4,98 @@
 <%@ page import="java.util.List"%>
 <%@ page import="Maintenance.Maintenancebean"%>
 <meta charset="UTF-8">
-<head></head>
-<body>
-<table class="table">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+	@media only screen and (max-width : 1200px) {
+		#insert_btn1, #insert_btn2{
+			width: 100% !important;
+			display : table !important;
+		}
+	}
+	
+	@media only screen and (max-width : 1199px) {
+	#table2{
+		left: 800px !important;
+	}
+}
 
+	@media only screen and (max-width : 991px) {
+	#table2{
+		display: none !important;
+	}
+	
+	.paging li {
+		display: inline-block;
+		border: 1px solid #006bb7;
+		border-radius : 3px;
+		padding: 3px 10px;
+		margin-top: 15px;
+		
+	}
+	
+	.paging li:hover {
+		background-color: #dbf0ff;
+	}
+	
+	.paging li a {
+		font-size: 18px;
+	}
+</style>
+<script>
+
+$(document).ready(function(){
+    $("#insert_btn1").click(function(){
+       if($("input[name=delete_check]").prop("checked")){
+          $("input[name=delete_check]").prop("checked",false);
+        }else{
+            $("input[name=delete_check]").prop("checked",true);
+           }
+       });
+    })
+    
+</script>
+</head>
+<body>
+
+<div class="page_header">
+		<div class="page_header_parallax">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>정보 검색</h3>
+						<h4>유지보수 정보 검색</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bcrumb-wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="bcrumbs">
+							<li>정보 검색</li>
+							<li>유지보수 정보 검색</li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+<div class="inner-content" style="padding-top: 50px; padding-bottom: 450px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9 double-space-bottom">
+					<h2 class="heading space30">유지보수 정보</h2>
+					<div class="space-top"></div>
+					<form action="#" method="post" name="#">
+<table class="table">
 <thead>
 	<tr>
+		<th>체크박스</th>
 		<th>기간</th>
 		<th>구분</th>
 		<th>타입</th>
@@ -40,6 +126,7 @@
 							
 						%>
 	<tr>
+		<td><input type="checkbox" value="" name="delete_check"></td>
 		<td><%=m.getGo_date() %></td>
 		<td><%=m.getSort() %></td>
 		<td><%=m.getType() %></td>
@@ -74,9 +161,67 @@
 						}
 						%>
 </table>
+</form>
+					<ul class="paging" style="text-align: center;">
+											<%
+					
+						
+						 int startPage = ((currentPage - 1) /5) * 5 + 1;
+				         int endPage = startPage + countPage - 1;
+				     
+				         if(totalCount == 0){
+				        	%> <li><a href="company_list.co?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">1</a></li><%
+				         }
+				         
+				         else{
+						if(totalCount % countList > 0){
+				            totalPage++;
+				         }
 
-<div class="space30" ></div>
-		<table class="table table-bordered" style="position: absolute; width: 150px; left: 900px;top : 0px;font-weight: bold; font-size: 13px;" id="table2">
+				         if(totalPage < currentPage){
+				            currentPage = totalPage;
+				         }
+
+				        
+
+				         if(endPage > totalPage){
+				            endPage = totalPage;
+				         }
+
+				         if(currentPage>=6){
+				         %>
+				            <li><a href="company_list.co?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">처음</a></li>
+				         <%
+				         }
+				         
+				         if(currentPage>5){
+				         %>
+				            <li><a href="search_form_ok.se?currentPage=<%=startPage-countPage%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">이전</a></li>
+				         <%
+				         }
+				         
+				         for(int i = startPage; i <= endPage; i++){
+				        	
+				         %>
+				         <li><a href="search_form_ok.se?currentPage=<%=i%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>"><%=i%></a></li>
+				         <%
+				         }
+				         if(endPage!=totalPage){
+				         %>
+				         <li><a href="search_form_ok.se?currentPage=<%=startPage+countPage%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">다음</a></li>
+				         <%
+				         }
+				         
+				         if(endPage!=totalPage){
+				         %>
+				         <li><a href="search_form_ok.se?currentPage=<%=totalPage%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">끝</a></li>
+				         <%
+				            }
+				         }
+				         %>
+				     	</ul>	
+	<div class="space30" ></div>
+		<table class="table table-bordered" style="position: absolute; width: 150px; left: 950px;top : 0px;font-weight: bold; font-size: 13px;" id="table2">
 				<tr style="background-color: gray;">
 					<td>구분</td>
 					<td>해당건수</td>
@@ -147,64 +292,9 @@
 					<td><%=add %>건</td>		
 				</tr>
 	</table>
-					<ul class="paging" style="text-align: center;">
-											<%
-					
-						
-						 int startPage = ((currentPage - 1) /5) * 5 + 1;
-				         int endPage = startPage + countPage - 1;
-				     
-				         if(totalCount == 0){
-				        	%> <li><a href="company_list.co?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">1</a></li><%
-				         }
-				         
-				         else{
-						if(totalCount % countList > 0){
-				            totalPage++;
-				         }
-
-				         if(totalPage < currentPage){
-				            currentPage = totalPage;
-				         }
-
-				        
-
-				         if(endPage > totalPage){
-				            endPage = totalPage;
-				         }
-
-				         if(currentPage>=6){
-				         %>
-				            <li><a href="company_list.co?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">처음</a></li>
-				         <%
-				         }
-				         
-				         if(currentPage>5){
-				         %>
-				            <li><a href="search_form_ok.se?currentPage=<%=startPage-countPage%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">이전</a></li>
-				         <%
-				         }
-				         
-				         for(int i = startPage; i <= endPage; i++){
-				        	
-				         %>
-				         <li><a href="search_form_ok.se?currentPage=<%=i%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>"><%=i%></a></li>
-				         <%
-				         }
-				         if(endPage!=totalPage){
-				         %>
-				         <li><a href="search_form_ok.se?currentPage=<%=startPage+countPage%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">다음</a></li>
-				         <%
-				         }
-				         
-				         if(endPage!=totalPage){
-				         %>
-				         <li><a href="search_form_ok.se?currentPage=<%=totalPage%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">끝</a></li>
-				         <%
-				            }
-				         }
-				         %>
-				     	</ul>	
-	
+	</div>
+	</div>
+	</div>
+	</div>
 </body>
 </html>

@@ -47,13 +47,14 @@ $(document).ready(function(){
     
 </script>
 </head>
+<body>
 <div class="page_header">
 		<div class="page_header_parallax">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h3>유지보수 현황 관리</h3>
-						<h4>고객사 관리</h4>
+						<h3>정보 검색</h3>
+						<h4>고객사 정보 검색</h4>
 					</div>
 				</div>
 			</div>
@@ -63,8 +64,8 @@ $(document).ready(function(){
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="bcrumbs">
-							<li>유지보수 현황 관리</li>
-							<li>고객사 관리</li>
+							<li>정보 검색</li>
+							<li>고객사 정보 검색</li>
 						</ul>
 						<div class="clearfix"></div>
 					</div>
@@ -223,4 +224,5 @@ $(document).ready(function(){
 			}
 		}
 	</script>
+</body>
 </html>
