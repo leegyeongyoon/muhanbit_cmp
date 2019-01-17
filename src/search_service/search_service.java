@@ -13,21 +13,20 @@ public class search_service {
 	public search_service() {
 		searchdao = searchDAO.getInstance();
 	}
-	public List<Maintenancebean> search_select_ma(String sort, String title, String search_data) {
-		System.out.println(sort + title + search_data);
+	public List<Maintenancebean> search_select_ma(String sort, String title, String search_data,String currentPage1) {
 		searchbean searchbean = new searchbean();
 		searchbean.setSort(sort);
 		searchbean.setTitle(title);
 		searchbean.setSearch_data(search_data);
-		return searchdao.search_select_ma(searchbean);
+		return searchdao.search_select_ma(searchbean,currentPage1);
 	}
 	
-	public List<companybean> search_select_cu(String sort, String title, String search_data) {
+	public List<companybean> search_select_cu(String sort, String title, String search_data,String currentPage1) {
 		System.out.println(sort + title + search_data);
 		searchbean searchbean = new searchbean();
 		searchbean.setSort(sort);
 		searchbean.setTitle(title);
 		searchbean.setSearch_data(search_data);
-		return searchdao.search_select_cu(searchbean);
+		return searchdao.search_select_cu(searchbean,currentPage1);
 	}
 }

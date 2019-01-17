@@ -79,7 +79,7 @@ $(document).ready(function(){
 					<h2 class="heading space30">고객사 정보</h2>
 					<div class="space-top">
 					<form action="company_delete.co" method="post" name="com_del_form">
-						<table class="table">
+					<table class="table">
 							<thead>
 								<tr>
 									<th>체크박스</th>
@@ -91,9 +91,19 @@ $(document).ready(function(){
 								</tr>
 							</thead>
 							<tbody>
-						<% List<companybean> companybean = (List<companybean>) request.getAttribute("search_select_List"); %>
+						<% List<companybean> companybean = (List<companybean>) request.getAttribute("search_select_List");
+							String sort = request.getParameter("sort");
+							String title = request.getParameter("title");
+							String search_data = request.getParameter("search_data");
+					
+						%>
 						
 						<%
+						int totalCount=0;
+						int countList =0;
+						int totalPage =0;
+						int currentPage=0;
+						int countPage=0;
 					
 						for(companybean c : companybean){
 
@@ -106,8 +116,12 @@ $(document).ready(function(){
 								<td><%=c.getPhone() %></td>
 								<td><%=c.getEmail() %></td>
 						<%
-						
-						
+						 totalCount = c.getTotalCount();
+						 countList = c.getCountList();
+						 totalPage = c.getTotalPage();
+						 currentPage = c.getCurrentPage();
+						 countPage = c.getCountPage();
+						System.out.println(c.getTotalCount()+c.getCountList()+c.getTotalPage()+c.getCurrentPage()+c.getCountPage());
 						}
 						%>		
 							</tr>				
@@ -116,7 +130,64 @@ $(document).ready(function(){
 						<input id = "insert_btn1" class="button btn-lg" value="체크박스 전체 선책" type="button" style = "font-size : 15px; display:inline; width: 49.8%;">
 						<input id = "insert_btn2" class="button btn-lg" value="체크 항목 삭제" type="button" style = "font-size : 15px; display:inline; width: 49.8%;" onclick="delete_com()">
 						</form>
-							
+									<ul class="paging" style="text-align: center;">
+											<%
+					
+						
+						 int startPage = ((currentPage - 1) /5) * 5 + 1;
+				         int endPage = startPage + countPage - 1;
+				     
+				         if(totalCount == 0){
+				        	%> <li><a href="company_list.co?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">1</a></li><%
+				         }
+				         
+				         else{
+						if(totalCount % countList > 0){
+				            totalPage++;
+				         }
+
+				         if(totalPage < currentPage){
+				            currentPage = totalPage;
+				         }
+
+				        
+
+				         if(endPage > totalPage){
+				            endPage = totalPage;
+				         }
+
+				         if(currentPage>=6){
+				         %>
+				            <li><a href="company_list.co?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">처음</a></li>
+				         <%
+				         }
+				         
+				         if(currentPage>5){
+				         %>
+				            <li><a href="search_form_ok.se?currentPage=<%=startPage-countPage%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">이전</a></li>
+				         <%
+				         }
+				         
+				         for(int i = startPage; i <= endPage; i++){
+				        	
+				         %>
+				         <li><a href="search_form_ok.se?currentPage=<%=i%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>"><%=i%></a></li>
+				         <%
+				         }
+				         if(endPage!=totalPage){
+				         %>
+				         <li><a href="search_form_ok.se?currentPage=<%=startPage+countPage%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">다음</a></li>
+				         <%
+				         }
+				         
+				         if(endPage!=totalPage){
+				         %>
+				         <li><a href="search_form_ok.se?currentPage=<%=totalPage%>&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">끝</a></li>
+				         <%
+				            }
+				         }
+				         %>
+				     	</ul>	
 					</div>
 				</div>
 		</div>

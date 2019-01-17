@@ -119,7 +119,7 @@ public class MaintenanceDAO {
 				pstmt = conn.prepareStatement(sql);
 			}
 			pstmt.setString(i, date);
-			System.out.println(pstmt);
+			
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
