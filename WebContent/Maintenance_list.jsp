@@ -46,7 +46,7 @@
 		mail =					m.getMail();
 		monthly_Inspection =	m.getMonthly_Inspection();
 		branch_Inspection =		m.getBranch_Inspection();
-		remote_Inspection =		m.getRemote();
+		remote_Inspection =		m.getRemote_Inspection();
 		neww=					m.getNeww();
 		add=					m.getAdd();
 	

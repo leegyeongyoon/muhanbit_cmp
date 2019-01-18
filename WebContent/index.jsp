@@ -47,7 +47,7 @@
 				String prm = request.getParameter("section");
 				if(prm == null || prm.equals("")) prm = "main_section.jsp";
 			%>
-			<jsp:include page="<%=prm%>" />
+			<jsp:include page="<%= prm %>" />
 		</section>
 		<footer>
 			<jsp:include page="main_footer.jsp" />

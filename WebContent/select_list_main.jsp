@@ -26,7 +26,7 @@
 	#table2{
 		display: none !important;
 	}
-	
+	}
 	.paging li {
 		display: inline-block;
 		border: 1px solid #006bb7;
@@ -147,7 +147,7 @@ $(document).ready(function(){
 		mail =					m.getMail();
 		monthly_Inspection =	m.getMonthly_Inspection();
 		branch_Inspection =		m.getBranch_Inspection();
-		remote_Inspection =		m.getRemote();
+		remote_Inspection =		m.getRemote_Inspection();
 		neww=					m.getNeww();
 		add=					m.getAdd();
 		
@@ -170,7 +170,7 @@ $(document).ready(function(){
 				         int endPage = startPage + countPage - 1;
 				     
 				         if(totalCount == 0){
-				        	%> <li><a href="company_list.co?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">1</a></li><%
+				        	%> <li><a href="search_form_ok.se?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">1</a></li><%
 				         }
 				         
 				         else{
@@ -190,7 +190,7 @@ $(document).ready(function(){
 
 				         if(currentPage>=6){
 				         %>
-				            <li><a href="company_list.co?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">처음</a></li>
+				            <li><a href="search_form_ok.se?&currentPage=1&sort=<%=sort%>&title=<%=title%>&search_data=<%=search_data%>">처음</a></li>
 				         <%
 				         }
 				         

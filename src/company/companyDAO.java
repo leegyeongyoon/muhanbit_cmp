@@ -233,13 +233,7 @@ public class companyDAO {
 
 	public void update_company(companybean companybean, String ori_name) {
 		String sql = "UPDATE customer_tbl SET name = ? , manager = ? , phone = ?, address = ? , email = ? WHERE name = ?";
-		System.out.println(companybean.getName());
-		System.out.println(companybean.getManager());
-		System.out.println(companybean.getPhone());
-		System.out.println(companybean.getAddress());
-		System.out.println(companybean.getEmail());
-		System.out.println(ori_name);
-
+	
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, companybean.getName());
