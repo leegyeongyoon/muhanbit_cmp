@@ -36,10 +36,10 @@ public class Maintenance_service {
 			}
 	}
 	
-	public List<Maintenancebean> getMaintenanceList(String year, String month, String select_company) {
+	public List<Maintenancebean> getMaintenanceList(String year, String month, String select_company , String currentPage1) {
 		Maintenancebean maintenancebean = new Maintenancebean();
 		maintenancebean.setCom_name(select_company);
-		return maintenancedao.selectMaintenanceList(year , month , maintenancebean);
+		return maintenancedao.selectMaintenanceList(year , month , maintenancebean , currentPage1);
 	}
 	
 

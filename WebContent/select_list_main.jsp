@@ -107,8 +107,9 @@ $(document).ready(function(){
 	</tr>
 	</thead>
 	<% List<Maintenancebean> maintenancebean = (List<Maintenancebean>) request.getAttribute("search_select_List");
-		int requestt = 0, progress = 0, Complet = 0, visit = 0, remote = 0, flowing_line = 0, mail = 0,
-			monthly_Inspection = 0, branch_Inspection = 0, remote_Inspection = 0, neww = 0, add = 0;
+	   List<Maintenancebean> maintenancebean1 = (List<Maintenancebean>) request.getAttribute("search_select_State");
+	   int requestt = 0, progress = 0, Complet = 0, visit = 0, remote = 0, flowing_line = 0, mail = 0,
+	   monthly_Inspection = 0, branch_Inspection = 0, remote_Inspection = 0, neww = 0, add = 0;
 		
 		String sort = request.getParameter("sort");
 		String title = request.getParameter("title");
@@ -138,27 +139,27 @@ $(document).ready(function(){
 	</tr>
 	<%
 	
-		requestt = 				m.getRequest();
-		progress = 				m.getProgress();
-		Complet =				m.getComplet();
-		visit =					m.getVisit();
-		remote =				m.getRemote();
-		flowing_line =			m.getFlowing_line();
-		mail =					m.getMail();
-		monthly_Inspection =	m.getMonthly_Inspection();
-		branch_Inspection =		m.getBranch_Inspection();
-		remote_Inspection =		m.getRemote_Inspection();
-		neww=					m.getNeww();
-		add=					m.getAdd();
-		
 		 totalCount = m.getTotalCount();
 		 countList = m.getCountList();
 		 totalPage = m.getTotalPage();
 		 currentPage = m.getCurrentPage();
 		 countPage = m.getCountPage();
 	
-	
 						}
+	for(Maintenancebean m1 : maintenancebean1){
+		requestt = 				m1.getRequest();
+		progress = 				m1.getProgress();
+		Complet =				m1.getComplet();
+		visit =					m1.getVisit();
+		remote =				m1.getRemote();
+		flowing_line =			m1.getFlowing_line();
+		mail =					m1.getMail();
+		monthly_Inspection =	m1.getMonthly_Inspection();
+		branch_Inspection =		m1.getBranch_Inspection();
+		remote_Inspection =		m1.getRemote_Inspection();
+		neww=					m1.getNeww();
+		add=					m1.getAdd();
+	}
 						%>
 </table>
 </form>
@@ -181,8 +182,6 @@ $(document).ready(function(){
 				         if(totalPage < currentPage){
 				            currentPage = totalPage;
 				         }
-
-				        
 
 				         if(endPage > totalPage){
 				            endPage = totalPage;
