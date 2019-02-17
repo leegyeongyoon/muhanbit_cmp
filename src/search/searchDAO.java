@@ -200,10 +200,135 @@ public class searchDAO {
 		return MaintenanceList;
 	}
 
+	
+	public List<Maintenancebean> search_select_ma_state(searchbean searchbean) {
+		String sql = "";
+		String sqlend = "ORDER BY l.customer,l.go_date ASC ";
+		
+		List<Maintenancebean> MaintenanceList = new ArrayList<Maintenancebean>();
+
+		try {
+
+			
+			sql = "SELECT l.type  from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq WHERE ";
+			int request = 0, progress = 0, Complet = 0, visit = 0, remote = 0, flowing_line = 0, mail = 0,
+					monthly_Inspection = 0, branch_Inspection = 0, remote_Inspection = 0, neww = 0, add = 0;
+			switch (searchbean.getTitle()) {
+			case "go_date":
+				sql += "l.go_date LIKE  ? " + sqlend;
+		
+				break;
+			case "sort":
+				sql += "c.sort LIKE     ? " + sqlend;
+		
+				break;
+			case "type":
+				sql += "l.type LIKE     ? " + sqlend;
+		
+				break;
+			case "title":
+				sql += "c.title LIKE    ? " + sqlend;
+		
+				break;
+			case "content":
+				sql += "l.content LIKE  ? " + sqlend;
+		
+				break;
+			case "op":
+				sql += "l.op LIKE       ? " + sqlend;
+		
+				break;
+			case "customer":
+				sql += "l.customer LIKE ? " + sqlend;
+		
+				break;
+			}
+
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + searchbean.getSearch_data() + "%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				switch (rs.getString(1)) {
+				case "요청":
+					request++;
+					break;
+				case "진행":
+					progress++;
+					break;
+				case "완료":
+					Complet++;
+					break;
+				case "방문":
+					visit++;
+					break;
+				case "원격":
+					remote++;
+					break;
+				case "유선":
+					flowing_line++;
+					break;
+				case "메일":
+					mail++;
+					break;
+				case "매월점검":
+					monthly_Inspection++;
+					break;
+				case "분기점검":
+					branch_Inspection++;
+					break;
+				case "원격점검":
+					remote_Inspection++;
+					break;
+				case "신규":
+					neww++;
+					break;
+				case "추가":
+					add++;
+					break;
+
+				}
+				Maintenancebean maintenancebean = new Maintenancebean();
+
+				maintenancebean.setRequest(request);
+				maintenancebean.setProgress(progress);
+				maintenancebean.setComplet(Complet);
+				maintenancebean.setVisit(visit);
+				maintenancebean.setRemote(remote);
+				maintenancebean.setFlowing_line(flowing_line);
+				maintenancebean.setMail(mail);
+				maintenancebean.setMonthly_Inspection(monthly_Inspection);
+				maintenancebean.setBranch_Inspection(branch_Inspection);
+				maintenancebean.setRemote_Inspection(remote_Inspection);
+				maintenancebean.setNeww(neww);
+				maintenancebean.setAdd(add);
+				MaintenanceList.add(maintenancebean);
+
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null && !pstmt.isClosed()) {
+					pstmt.close();
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				// TODO: handle exception
+			}
+		}
+		return MaintenanceList;
+	}
+	
 	public List<companybean> search_select_cu(searchbean searchbean, String currentPage1) {
 		String sql = "";
-		String sqlend = "ORDER BY l.customer,l.go_date ASC LIMIT ?,?";
-		String totalsqlend = "ORDER BY l.customer,l.go_date ASC ";
+		String sqlend = "ORDER BY name ASC LIMIT ?,?";
+		String totalsqlend = "ORDER BY name ASC ";
 		String totalsql = "";
 
 		List<companybean> companyList = new ArrayList<companybean>();

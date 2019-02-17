@@ -72,7 +72,8 @@ public class searchservlet extends HttpServlet {
 			String search_data = request.getParameter("search_data");
 			String currentPage1 = request.getParameter("currentPage");
 			if(sort.equals("Main_info")) {
-			request.setAttribute("search_select_List", service.search_select_ma(sort, title,search_data,currentPage1));
+			request.setAttribute("search_select_List",  service.search_select_ma_list(sort, title,search_data,currentPage1));
+			request.setAttribute("search_select_State", service.search_select_ma_state(sort, title,search_data));
 			
 			request.getRequestDispatcher("index.jsp?section=select_list_main.jsp").forward(request, response);
 			}
