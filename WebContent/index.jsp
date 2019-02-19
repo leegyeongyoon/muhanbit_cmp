@@ -36,6 +36,7 @@
 
 	<!-- SKIN -->
 	<link rel="stylesheet" href="css/color-scheme/default-blue.css" type="text/css">
+	<script src="validate.js"></script>
 </head>
 <body>
 	<div class="outer-wrapper">
@@ -50,6 +51,7 @@
 			<jsp:include page="<%= prm %>" />
 		</section>
 		<footer>
+		
 			<jsp:include page="main_footer.jsp" />
 		</footer>
 		</div>

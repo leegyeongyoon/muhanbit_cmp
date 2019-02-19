@@ -16,63 +16,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<script>
-		function state_change(){
-		        var result = document.getElementById('name_select');
-		                $.ajax({
-		                    url : "test.do?sort="+document.getElementById("state_select").value ,// test.jsp 에서 받아옴
-		                    dataType :"json", // 데이터타입을 json 으로 받아옴
-		                    success : function(data) {
-		                        result.innerHTML = data;
-		                    },
-		                    error : function(e) {
-		                        result.innerHTML = e.responseText;
-		                    }
-		                });
-		            
-		    	
-			
-			if(document.getElementById("state_select").value=="장애"){
-				document.getElementById("type_select").innerHTML= "<option value='요청'>요청</option>"
-				+"<option value='진행'>진행</option>"
-				+"<option value='완료'>완료</option>"
-			}
-			
-			else if(document.getElementById("state_select").value=="percall"){
-				document.getElementById("type_select").innerHTML= "<option value='방문'>방문</option>"
-				+"<option value='원격'>원격</option>"
-				+"<option value='유선'>유선</option>"
-				+"<option value='메일'>메일</option>"
-			}
-			
-			else if(document.getElementById("state_select").value=="정기점검"){
-				document.getElementById("type_select").innerHTML= "<option value='매월점검'>매월점검</option>"
-				+"<option value='분기점검'>분기점검</option>"
-				+"<option value='원격점검'>원격점검</option>"
-			}
-			
-			else if(document.getElementById("state_select").value=="구축"){
-				document.getElementById("type_select").innerHTML= "<option value='신규'>신규</option>"
-				+"<option value='추가'>추가</option>"
-			}
-		
-		}	
-		
-		function companysel(){
-	        var result = document.getElementById('company_select');
-            $.ajax({
-                url : "company_list_select.co",// test.jsp 에서 받아옴
-                dataType :"json", // 데이터타입을 json 으로 받아옴
-                success : function(data) {
-                    result.innerHTML = data;
-                },
-                error : function(e) {
-                    result.innerHTML = e.responseText;
-                }
-            });
-			
-		}
-	</script>
 		<div class="page_header">
 		<div class="page_header_parallax">
 			<div class="container">
