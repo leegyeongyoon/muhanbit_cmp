@@ -32,6 +32,11 @@
 	.paging li a {
 		font-size: 18px;
 	}
+	
+	#table1 tbody tr:hover {
+		background-color: #d6d7d8;
+	}
+	
 </style>
 <script>
 
@@ -79,7 +84,7 @@ $(document).ready(function(){
 					<h2 class="heading space30">고객사 정보</h2>
 					<div class="space-top">
 					<form action="company_delete.co" method="post" name="com_del_form">
-						<table class="table">
+						<table class="table" id="table1">
 							<thead>
 								<tr>
 									<th>체크박스</th>
@@ -104,11 +109,12 @@ $(document).ready(function(){
 						%>
 							<tr>
 								<td><input type="checkbox" value="<%=c.getName()%>" name="delete_check"></td>
-								<td><a href="company_update.co?name=<%=c.getName()%>"><%=c.getName() %></a></td>
-								<td><%=c.getAddress() %></td>
-								<td><%=c.getManager() %></td>
-								<td><%=c.getPhone() %></td>
-								<td><%=c.getEmail() %></td>
+								<td onclick="location.href= 'company_update.co?name=<%=c.getName()%>'"><%=c.getName() %></td>
+								<td onclick="location.href= 'company_update.co?name=<%=c.getName()%>'"><%=c.getAddress() %></td>
+								<td onclick="location.href= 'company_update.co?name=<%=c.getName()%>'"><%=c.getManager() %></td>
+								<td onclick="location.href= 'company_update.co?name=<%=c.getName()%>'"><%=c.getPhone() %></td>
+								<td onclick="location.href= 'company_update.co?name=<%=c.getName()%>'"><%=c.getEmail() %></td>
+							
 						<%
 						 totalCount = c.getTotalCount();
 						 countList = c.getCountList();
@@ -118,7 +124,7 @@ $(document).ready(function(){
 						
 						}
 						%>		
-							</tr>				
+							</tr>			
 							</tbody>
 						</table>
 						<input id = "insert_btn1" class="button btn-lg" value="체크박스 전체 선책" type="button" style = "font-size : 15px; display:inline; width: 49.8%;">
