@@ -109,46 +109,64 @@ public class MaintenanceDAO {
 			String totalsql = "";
 			int i = 1;
 			String date = year + "-" + month + "%";
-			int totalCount = 0;
-			totalsql="select count(*) from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq  WHERE l.customer = ? AND l.go_date LIKE ? ORDER BY l.go_date ASC";			
-				
-			PreparedStatement totalstem = conn.prepareStatement(totalsql);
+			int totalCount = 0;				
+			PreparedStatement totalstem = null;
+			
+			int currentPage = 0; // 현재 페이지
+			
+
+			int countList = 0; // 한 페이지에 보여줄 글 수
+			int countPage = 0;
+			int startPage = 0;
+			int endPage = 0;
+			int totalPage = 0;
 				
 			if (maintenancebean.getCom_name() != null) {
 				sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date ,l.customer from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq  WHERE l.customer = ? AND l.go_date LIKE ? ORDER BY l.go_date ASC";
-
+			
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(i, maintenancebean.getCom_name());
-				totalstem.setString(1, maintenancebean.getCom_name());
+				
 				i++;
 				pstmt.setString(i, date);
-				totalstem.setString(i, date);
+			
 			} else {
-				sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date ,l.customer from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq WHERE l.go_date LIKE ? ORDER BY l.customer,l.go_date ASC";
-				pstmt = conn.prepareStatement(sql);
+			 	currentPage = 1; // 현재 페이지
+				if (currentPage1 != null) {
+					currentPage = Integer.parseInt(currentPage1);
+				} // 만
+
+				 countList = 10; // 한 페이지에 보여줄 글 수
+				 countPage = 5;
+			
+				 
+				 
+				totalsql="select count(*) from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq  WHERE  l.go_date LIKE ? ORDER BY l.go_date ASC ";
+			    totalstem = conn.prepareStatement(totalsql);
+				totalstem.setString(i, date);
+				sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date ,l.customer from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq WHERE l.go_date LIKE ? ORDER BY l.customer,l.go_date ASC  LIMIT ?,?";
 				
-			}
+					pstmt = conn.prepareStatement(sql);
+				 	pstmt.setString(1, date);
+					pstmt.setInt(2,(currentPage-1)*countList);
+					pstmt.setInt(3, countList);
+					
 			
-			ResultSet totalrs = totalstem.executeQuery();
-			
-			while (totalrs.next()) {
-				totalCount = totalrs.getInt(1);
-			}
-
-			int currentPage = 1; // 현재 페이지
-			if (currentPage1 != null) {
-				currentPage = Integer.parseInt(currentPage1);
-			} // 만
-
-			int countList = 10; // 한 페이지에 보여줄 글 수
-			int countPage = 5;
-			int startPage = ((currentPage - 1) / 5) * 5 + 1;
-			int endPage = startPage + countPage - 1;
-			int totalPage = totalCount / countList;
-
-			
-			
+		        
+		        
+		   	
+					ResultSet totalrs = totalstem.executeQuery();
+					
+					while (totalrs.next()) {
+						totalCount = totalrs.getInt(1);
+					} 	
+					 startPage = ((currentPage - 1) / 5) * 5 + 1;
+					 endPage = startPage + countPage - 1;
+					 totalPage = totalCount / countList;
+				 
+			}	
+				
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -177,7 +195,6 @@ public class MaintenanceDAO {
 				maintenancebean1.setOther(rs.getString(7));
 				maintenancebean1.setGo_date(rs.getString(8));
 				maintenancebean1.setCom_name(rs.getString(9));
-
 				maintenancebean1.setRequest(request);
 				maintenancebean1.setProgress(progress);
 				maintenancebean1.setComplet(Complet);
@@ -190,11 +207,11 @@ public class MaintenanceDAO {
 				maintenancebean1.setRemote_Inspection(remote_Inspection);
 				maintenancebean1.setNeww(neww);
 				maintenancebean1.setAdd(add);
-				maintenancebean.setCountList(countList);
-				maintenancebean.setCountPage(countPage);
-				maintenancebean.setTotalPage(totalPage);
-				maintenancebean.setTotalCount(totalCount);
-				maintenancebean.setCurrentPage(currentPage);
+				maintenancebean1.setCountList(countList);
+				maintenancebean1.setCountPage(countPage);
+				maintenancebean1.setTotalPage(totalPage);
+				maintenancebean1.setTotalCount(totalCount);
+				maintenancebean1.setCurrentPage(currentPage);
 				MaintenanceList.add(maintenancebean1);
 				
 			}

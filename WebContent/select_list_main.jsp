@@ -139,27 +139,27 @@ $(document).ready(function(){
 	</tr>
 	<%
 	
+		requestt = 				m.getRequest();
+		progress = 				m.getProgress();
+		Complet =				m.getComplet();
+		visit =					m.getVisit();
+		remote =				m.getRemote();
+		flowing_line =			m.getFlowing_line();
+		mail =					m.getMail();
+		monthly_Inspection =	m.getMonthly_Inspection();
+		branch_Inspection =		m.getBranch_Inspection();
+		remote_Inspection =		m.getRemote_Inspection();
+		neww=					m.getNeww();
+		add=					m.getAdd();
+		
 		 totalCount = m.getTotalCount();
 		 countList = m.getCountList();
 		 totalPage = m.getTotalPage();
 		 currentPage = m.getCurrentPage();
 		 countPage = m.getCountPage();
 	
+	
 						}
-	for(Maintenancebean m1 : maintenancebean1){
-		requestt = 				m1.getRequest();
-		progress = 				m1.getProgress();
-		Complet =				m1.getComplet();
-		visit =					m1.getVisit();
-		remote =				m1.getRemote();
-		flowing_line =			m1.getFlowing_line();
-		mail =					m1.getMail();
-		monthly_Inspection =	m1.getMonthly_Inspection();
-		branch_Inspection =		m1.getBranch_Inspection();
-		remote_Inspection =		m1.getRemote_Inspection();
-		neww=					m1.getNeww();
-		add=					m1.getAdd();
-	}
 						%>
 </table>
 </form>

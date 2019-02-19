@@ -1,0 +1,59 @@
+diff a/src/Maintenance/MaintenanceDAO.java b/src/Maintenance/MaintenanceDAO.java	(rejected hunks)
+@@ -100,25 +100,54 @@
+ 
+ 	}
+ 
+-	public List<Maintenancebean> selectMaintenanceList(String year, String month, Maintenancebean maintenancebean) {
++	public List<Maintenancebean> selectMaintenanceList(String year, String month, Maintenancebean maintenancebean,String currentPage1) {
+ 		List<Maintenancebean> MaintenanceList = new ArrayList<Maintenancebean>();
+ 		try {
+ 			int request = 0, progress = 0, Complet = 0, visit = 0, remote = 0, flowing_line = 0, mail = 0,
+ 				monthly_Inspection = 0, branch_Inspection = 0, remote_Inspection = 0, neww = 0, add = 0;
+ 			String sql = "";
++			String totalsql = "";
+ 			int i = 1;
+ 			String date = year + "-" + month + "%";
+-			
++			int totalCount = 0;
++			totalsql="select count(*) from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq  WHERE l.customer = ? AND l.go_date LIKE ? ORDER BY l.go_date ASC";			
++				
++			PreparedStatement totalstem = conn.prepareStatement(totalsql);
++				
+ 			if (maintenancebean.getCom_name() != null) {
+ 				sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date ,l.customer from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq  WHERE l.customer = ? AND l.go_date LIKE ? ORDER BY l.go_date ASC";
++
++				
+ 				pstmt = conn.prepareStatement(sql);
+ 				pstmt.setString(i, maintenancebean.getCom_name());
++				totalstem.setString(1, maintenancebean.getCom_name());
+ 				i++;
++				pstmt.setString(i, date);
++				totalstem.setString(i, date);
+ 			} else {
+ 				sql = "select c.sort,c.title,l.customer,l.type,l.op,l.content,l.other,l.go_date ,l.customer from category_tbl AS c JOIN customer_list_tbl  AS l ON c.seq = l.fk_ca_seq WHERE l.go_date LIKE ? ORDER BY l.customer,l.go_date ASC";
+ 				pstmt = conn.prepareStatement(sql);
++				
+ 			}
+-			pstmt.setString(i, date);
++			
++			ResultSet totalrs = totalstem.executeQuery();
++			
++			while (totalrs.next()) {
++				totalCount = totalrs.getInt(1);
++			}
++
++			int currentPage = 1; // ���� ������
++			if (currentPage1 != null) {
++				currentPage = Integer.parseInt(currentPage1);
++			} // ��
++
++			int countList = 10; // �� �������� ������ �� ��
++			int countPage = 5;
++			int startPage = ((currentPage - 1) / 5) * 5 + 1;
++			int endPage = startPage + countPage - 1;
++			int totalPage = totalCount / countList;
++
++			
+ 			
+ 			rs = pstmt.executeQuery();
+ 			

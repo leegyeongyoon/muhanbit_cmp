@@ -108,7 +108,7 @@
 						<option value="11">11</option>
 						<option value="12">12</option>
 					</select><span style="font-size: 20px; margin-right: 10px;">월</span>
-						<input type="button" onclick="monthsel()" value="검색" class="search">
+						<input type="button" onclick="monthsel(1)" value="검색" class="search">
 					<h2 class="heading space30">전체 유지보수 현황</h2>
 					<div class="space-top">
 						<form action="company_delete.co" method="post" name="com_del_form">
@@ -133,7 +133,8 @@
 	</div>
 
 	<script>
-		function monthsel() {
+		function monthsel(currentPage) {
+			alert(currentPage);
 			var year = document.getElementById("year").value;
 			var month = document.getElementById("month").value;
 			if (year == "" || month == "") {
@@ -145,8 +146,9 @@
 				return false;
 			} else {
 				var result = document.getElementById('monthselect');
+				
 				$.ajax({
-					url : "Maintenance_list.ma?year=" + year + "&month="
+					url : "Maintenance_list.ma?currentPage="+currentPage+"&year=" + year + "&month="
 							+ month,// test.jsp 에서 받아옴
 					dataType : "json", // 데이터타입을 json 으로 받아옴
 					success : function(data) {

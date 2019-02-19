@@ -21,6 +21,13 @@
 	<% List<Maintenancebean> maintenancebean = (List<Maintenancebean>) request.getAttribute("maintenanceList");
 		int requestt = 0, progress = 0, Complet = 0, visit = 0, remote = 0, flowing_line = 0, mail = 0,
 			monthly_Inspection = 0, branch_Inspection = 0, remote_Inspection = 0, neww = 0, add = 0;
+		int totalCount=0;
+		int countList =0;
+		int totalPage =0;
+		int currentPage=0;
+		int countPage=0;
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
 	%>
 	<% for(Maintenancebean m : maintenancebean){
 							
@@ -49,7 +56,17 @@
 		remote_Inspection =		m.getRemote_Inspection();
 		neww=					m.getNeww();
 		add=					m.getAdd();
-	
+		
+		if(m.getTotalCount() != 0){
+			
+			 totalCount = m.getTotalCount();
+			 countList = m.getCountList();
+			 totalPage = m.getTotalPage();
+			 currentPage = m.getCurrentPage();
+			 countPage = m.getCountPage();
+			
+			
+		}
 	
 						}
 						%>
@@ -125,3 +142,75 @@
 					<td><%=add %>건</td>		
 				</tr>
 	</table>
+	<%
+	if(totalCount != 0){
+		
+			%>
+			<ul class="paging" style="text-align: center;">
+										<%
+				
+					
+					 int startPage = ((currentPage - 1) /5) * 5 + 1;
+			         int endPage = startPage + countPage - 1;
+			         
+			     
+			         if(totalCount == 0){
+			        	
+			        	%> <li><a onclick="monthsel(<%=1%>)">1</a></li><%
+			        	
+			         }
+			         
+			         else{
+			        	 
+					if(totalCount % countList > 0){
+			            totalPage++;
+			            
+			         }
+
+			         if(totalPage < currentPage){
+			            currentPage = totalPage;
+			         }
+			     	
+			         if(endPage > totalPage){
+			            endPage = totalPage;
+			         }
+
+			         if(currentPage>=6){
+			        	 
+			         %>
+			            <li><a onclick="monthsel(<%=1%>)" href="#">처음</a></li>
+			         <%
+			         }
+			         
+			         if(currentPage>5){
+			        	 currentPage =startPage-countPage;
+			         %>
+			            <li><a href="Maintenance_list.ma?currentPage=<%=startPage-countPage%>&year=<%=year%>&month=<%=month%>&">이전</a></li>
+			         <%
+			         }
+			        
+			         for(int i = startPage; i <= endPage; i++){
+			        	 
+			         %>
+			         <li><a onclick="monthsel(<%=i%>)"><%=i%></a></li>
+			         <%
+			         }
+			         if(endPage!=totalPage){
+			
+			         %>
+			         <li><a onclick="monthsel(<%=startPage+countPage%>)">다음</a></li>
+			         <%
+			         }
+			         
+			         if(endPage!=totalPage){
+			        	 
+			         %>
+			         <li><a onclick="monthsel(<%=totalPage%>)">끝</a></li>
+			         <%
+			            }
+			         
+			         }
+			         %>
+			     	</ul>	<% 
+	}
+			         %>

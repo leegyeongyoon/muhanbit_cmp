@@ -39,6 +39,7 @@
 </head>
 <body>
 	<div class="outer-wrapper">
+	
 		<header id="header-main">
 			<jsp:include page="main_header.jsp" />
 		</header>
