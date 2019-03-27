@@ -35,8 +35,13 @@ public class state_service {
 		statebean stbean = new statebean();
 		stbean.setSort(sort);
 		stbean.setTitle(title);
-		statedao.delete_state(stbean);
-		return true;
+		if(statedao.delete_state(stbean)) {
+			return true;	
+		}
+		else {
+			return false;
+		}
+		
 	}
 		else {
 			return false;

@@ -20,7 +20,8 @@
 	<link rel="stylesheet" href="js/rs-plugin/css/settings.css">
 	<link rel="stylesheet" href="js/flexslider/flexslider.css">
 	<link rel="stylesheet" href="js/isotope/isotope.css">
-	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="sty
+	lesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="js/magnific-popup/magnific-popup.css">
 	<link rel="stylesheet" href="css/style.css">
 

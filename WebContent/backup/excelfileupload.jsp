@@ -91,70 +91,15 @@ a {
             </thead>
             <tbody>
               <tr>
-                <td>현재 재고 목록 데이터</td>
+                <td>유지보수 현황 리스트</td>
                 <td><a id="down1" href="#"><%=originalName[0]%></a></td>
               </tr>
-              <tr>
-                <td>재고 내역 데이터</td>
-                <td><a id="down2" href="#"><%=originalName[1]%></a></td>
-              </tr>
+              
             
             </tbody>
           </table> 
         
-        <button type="button" class="btn btn-danger col-sm-12" data-toggle="collapse" data-target="#demo" style="margin-bottom: 2em;">엑셀 파일 생성중 한글이 깨질 때 버튼을 눌러 주세요</button>
-          <div id="demo" class="collapse">
-          <div class="thumbnail" style="margin-top: 80px;">
-              <img src="<%=request.getContextPath()%>/img/charset.png" style="width:90%; height:400px;">
-              <div class="caption">
-                <p style="font-size: 14pt;font-weight: bold;">다운받은 엑셀파일 경로에 들어가 있는 엑셀 파일 중 한글이 깨지는</p>
-                <p style="font-size: 14pt;font-weight: bold;">엑셀 파일을 오른쪽 클릭 후 [연결 프로그램 - 메모장]으로 파일을 열어 주십시오.</p>
-              </div>
-          </div>
-          <div class="thumbnail" style="margin-top:10px;">
-             <img src="<%=request.getContextPath()%>/img/charset2.png" style="width:90%; height:400px;">
-              <div class="caption">
-                <p style="font-size: 14pt;font-weight: bold;">메모장에서 [파일 - 다른 이름으로 저장]을 눌러 줍니다.</p>
-              </div>
-          </div>
-          <div class="thumbnail" style="margin-top:10px;">
-            <img src="<%=request.getContextPath()%>/img/charset3.png" style="width:90%; height:400px;">
-              <div class="caption">
-                <p style="font-size: 14pt;font-weight: bold;">제일 아래 부분에 인코딩을 ANSI로 바꿔 주신 후 저장을 해 줍니다.</p>
-                <p style="font-size: 14pt;font-weight: bold;">저장 하신 후 파일을 다시 열어 주시면 한글이 깨지지 않는 파일을 보실 수 있으십니다.</p>
-              </div>
-          </div>
-          </div>
-    <script type="text/javascript">
-        // 영문파일은 그냥 다운로드 클릭시 정상작동하지만 한글파일명을 쿼리문으로 날릴경우 인코딩 문제가 발생할 수 있다. 한글이 깨져 정상작동하지 않을 수 있음
-        // 따라서, 쿼리문자열에 한글을 보낼 때는 항상 인코딩을 해서 보내주도록 하자.
-        document.getElementById("down1").addEventListener("click", function(event) {
-            event.preventDefault(); // a 태그의 기본 동작을 막음
-            event.stopPropagation(); // 이벤트의 전파를 막음
-            // fileName1을 utf-8로 인코딩한다.
-            var fName = encodeURIComponent("<%=fileName[0]%>");
-                    // 인코딩된 파일이름을 쿼리문자열에 포함시켜 다운로드 페이지로 이동
-                    window.location.href = "excelfileDownload.jsp?file_name=" + fName;
-                });
-        
-        document.getElementById("down2").addEventListener("click", function(event) {
-            event.preventDefault(); // a 태그의 기본 동작을 막음
-            event.stopPropagation(); // 이벤트의 전파를 막음
-            // fileName1을 utf-8로 인코딩한다.
-            var fName = encodeURIComponent("<%=fileName[1]%>");
-                    // 인코딩된 파일이름을 쿼리문자열에 포함시켜 다운로드 페이지로 이동
-                    window.location.href = "excelfileDownload.jsp?file_name=" + fName;
-                });
-        
-        document.getElementById("down3").addEventListener("click", function(event) {
-            event.preventDefault(); // a 태그의 기본 동작을 막음
-            event.stopPropagation(); // 이벤트의 전파를 막음
-            // fileName1을 utf-8로 인코딩한다.
-            var fName = encodeURIComponent("<%=fileName[2]%>");
-                    // 인코딩된 파일이름을 쿼리문자열에 포함시켜 다운로드 페이지로 이동
-                    window.location.href = "excelfileDownload.jsp?file_name=" + fName;
-                });
-    </script>
+       
     </div>
     </div>
     </div>

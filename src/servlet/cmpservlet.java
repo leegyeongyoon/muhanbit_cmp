@@ -89,7 +89,7 @@ public class cmpservlet extends HttpServlet {
 				out.println("<script>alert('삭제 성공'); location.href='index.do'</script>");
 
 			} else {
-				out.println("<script>alert('삭제 실패'); location.href='state_delete.do'</script>");
+				out.println("<script>alert('삭제 실패'); location.href='state_delete_page.do'</script>");
 
 			}
 			

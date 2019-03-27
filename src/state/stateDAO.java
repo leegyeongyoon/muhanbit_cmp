@@ -84,7 +84,6 @@ public class stateDAO {
 			}
 			}
 			catch (Exception e) {
-				// TODO: handle exception
 				e.printStackTrace();
 			}
 			finally {
@@ -141,7 +140,7 @@ public class stateDAO {
 			return statelist;
 			
 		}
-		public void delete_state(statebean statebean) {
+		public boolean delete_state(statebean statebean) {
 			String sql = "DELETE FROM category_tbl where sort = ? AND title = ?";
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -151,8 +150,10 @@ public class stateDAO {
 
 			}
 			catch (Exception e) {
+				
 				// TODO: handle exception
 				e.printStackTrace();
+				return false;
 			}
 			finally {
 				try {
@@ -164,8 +165,10 @@ public class stateDAO {
 				catch (Exception e) {
 					e.printStackTrace();
 					// TODO: handle exception
+					return false;
 				}
 				}
+			return true;
 			}
 	
 		

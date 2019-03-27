@@ -46,7 +46,18 @@
 									<li><a href="Maintenance_company_list.co">고객사별 보기</a></li>
 									<li><a href="Maintenance_list_page.ma">전체 보기</a></li>
 								</ul></li>
-							<li class="dropdown"><a href="#"> 데이터 백업 </a></li>
+								
+								<li class="dropdown"><a href="#" data-toggle="dropdown"
+								class="dropdown-toggle"> 데이터 백업
+									<div class="arrow-up">
+										<i class="fa fa-angle-down"></i>
+									</div>
+							</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="index.jsp?section=backup/databackup.jsp">백업파일 생성</a></li>
+								     <li><a href="index.jsp?section=backup/datarestore.jsp">데이터 복구</a></li>
+								     <li><a href="index.jsp?section=backup/excelfileupload.jsp">데이터 엑셀 파일로 생성</a>
+								</ul></li>
 							<li class="dropdown"><a href="search_form.se">정보 검색 </a></li>
 						</ul>
 					</div>
