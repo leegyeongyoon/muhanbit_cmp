@@ -134,7 +134,6 @@
 
 	<script>
 		function monthsel(currentPage) {
-			alert(currentPage);
 			var year = document.getElementById("year").value;
 			var month = document.getElementById("month").value;
 			if (year == "" || month == "") {
