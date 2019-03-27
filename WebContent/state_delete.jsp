@@ -16,22 +16,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<script>
-		function state_change(){
-		        var result = document.getElementById('name_select');
-		                $.ajax({
-		                    url : "test.do?sort="+document.getElementById("state_select").value ,// test.jsp 에서 받아옴
-		                    dataType :"json", // 데이터타입을 json 으로 받아옴
-		                    success : function(data) {
-		                        result.innerHTML = data;
-		                    },
-		                    error : function(e) {
-		                        result.innerHTML = e.responseText;
-		                    }
-		                });
-		            
-		}	
-	</script>
 		<div class="page_header">
 		<div class="page_header_parallax">
 			<div class="container">
@@ -64,7 +48,7 @@
 					<form action="state_delete_ok.do" method="post">
 					<h4 class="uppercase" style = "margin : 15px 0px;">구분</h4>
 						<div class="form-group">
-							<select class="form-control" id="state_select" name="sort" style="height: 50px; padding: 0 20px; border: 1px solid darkblue;" onchange="state_change()">
+							<select class="form-control" id="state_select" name="sort" style="height: 50px; padding: 0 20px; border: 1px solid darkblue;" onchange="del_state_change()">
 								<option></option>
 								<option value="장애">장애</option>
 								<option value="percall">percall</option>
