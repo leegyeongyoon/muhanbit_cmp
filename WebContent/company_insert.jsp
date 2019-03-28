@@ -5,6 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function insert_check() {
+	if (frm_insert.company_name.value == "") {
+		alert('고객사 명을 선택하지 않으셨습니다.')
+		frm_insert.company_name.focus();
+		return false;
+	}
+	frm_insert.submit();
+}
+</script>
 <style>
 	@media only screen and (max-width : 1200px) {
 		#insert_btn {
@@ -45,7 +55,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<h4 class="uppercase" style = "margin : 15px 0px;">고객사 이름</h4>
-					<form action="company_insert.co" method="post">
+					<form action="company_insert.co" method="post" name="frm_insert">
 						<div class="form-group">
 							<input class="form-control" name="company_name" type="text" autocomplete="off" autofocus="autofocus">
 						</div>
@@ -65,7 +75,7 @@
 						<div class="form-group">
 							<input class="form-control" name="company_address" type="text" autocomplete="off">
 						</div>	
-						<input id = "insert_btn" class="button btn-lg" value="등록하기" type="submit" style = "font-size : 15px; display:inline;">
+						<input id = "insert_btn" class="button btn-lg" value="등록하기" type="button" style = "font-size : 15px; display:inline;" onclick="insert_check()">
 						<input id = "insert_btn" class="button btn-lg" value="메인으로" type="button" onclick="location.href='index.do'" style = "font-size : 15px; display:inline;">
 						<div class="space20"></div>
 					</form>

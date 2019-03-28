@@ -7,6 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function update_check() {
+	if (frm_update.company_name.value == "") {
+		alert('고객사 명을 선택하지 않으셨습니다.')
+		frm_update.company_name.focus();
+		return false;
+	}
+	frm_update.submit();
+}
+</script>
 <style>
 	@media only screen and (max-width : 1200px) {
 		#insert_btn {
@@ -51,7 +61,7 @@
 	
 					%>
 					<h4 class="uppercase" style = "margin : 15px 0px;">고객사 이름</h4>
-					<form action="company_update_ok.co" method="post">
+					<form action="company_update_ok.co" method="post" name="frm_update">
 					<input type="hidden" value="<%=c.getName()%>" name="name">
 						<div class="form-group">
 							<input class="form-control" name="company_name" type="text" autocomplete="off" autofocus="autofocus" value="<%=c.getName()%>">
@@ -72,7 +82,7 @@
 						<div class="form-group">
 							<input class="form-control" name="company_address" type="text" autocomplete="off" value="<%=c.getAddress()%>">
 						</div>	
-						<input id = "insert_btn" class="button btn-lg" value="수정하기" type="submit" style = "font-size : 15px; display:inline;">
+						<input id = "insert_btn" class="button btn-lg" value="수정하기" type="button" style = "font-size : 15px; display:inline;" onclick="update_check()">
 						<input id = "insert_btn" class="button btn-lg" value="메인으로" type="button" onclick="location.href='index.do'" style = "font-size : 15px; display:inline;">
 						<div class="space20"></div>
 					</form>

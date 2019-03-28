@@ -116,15 +116,6 @@
 						<div id="monthselect">
 						
 						</div>
-						
-							
-							<input id="insert_btn1" class="button btn-lg" value="체크박스 전체 선책"
-								type="button"
-								style="font-size: 15px; display: inline; width: 49.7%;">
-							<input id="insert_btn2" class="button btn-lg" value="체크 항목 삭제"
-								type="button"
-								style="font-size: 15px; display: inline; width: 49.7%;"
-								onclick="delete_com()">
 						</form>
 					</div>
 				</div>

@@ -3,7 +3,32 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="Maintenance.Maintenancebean"%>
+<head>
+<style>
+.paging {
+	margin-bottom: 20px;
+}
+
+.paging li {
+		display: inline-block;
+		border: 1px solid #006bb7;
+		border-radius : 3px;
+		padding: 3px 10px;
+		margin-top: 15px;
+		
+	}
+	
+	.paging li:hover {
+		background-color: #dbf0ff;
+	}
+	
+	.paging li a {
+		font-size: 18px;
+	}
+</style>
 <meta charset="UTF-8">
+</head>
+<body>
 <table class="table">
 
 <thead>
@@ -156,7 +181,7 @@
 			     
 			         if(totalCount == 0){
 			        	
-			        	%> <li><a onclick="monthsel(<%=1%>)">1</a></li><%
+			        	%> <li><a onclick="monthsel(<%=1%>)" href="#">1</a></li><%
 			        	
 			         }
 			         
@@ -183,29 +208,27 @@
 			         }
 			         
 			         if(currentPage>5){
-			        	 currentPage =startPage-countPage;
 			         %>
-			            <li><a href="Maintenance_list.ma?currentPage=<%=startPage-countPage%>&year=<%=year%>&month=<%=month%>&">이전</a></li>
+			            <li><a onclick="monthsel(<%=startPage-countPage%>)" href="#">이전</a></li>
 			         <%
 			         }
 			        
 			         for(int i = startPage; i <= endPage; i++){
-			        	 
 			         %>
-			         <li><a onclick="monthsel(<%=i%>)"><%=i%></a></li>
+			         <li><a onclick="monthsel(<%=i%>)" href="#" id="fdsa"><%=i%></a></li>
 			         <%
 			         }
 			         if(endPage!=totalPage){
 			
 			         %>
-			         <li><a onclick="monthsel(<%=startPage+countPage%>)">다음</a></li>
+			         <li><a onclick="monthsel(<%=startPage+countPage%>)" href="#">다음</a></li>
 			         <%
 			         }
 			         
 			         if(endPage!=totalPage){
 			        	 
 			         %>
-			         <li><a onclick="monthsel(<%=totalPage%>)">끝</a></li>
+			         <li><a onclick="monthsel(<%=totalPage%>)" href="#">끝</a></li>
 			         <%
 			            }
 			         
@@ -214,3 +237,4 @@
 			     	</ul>	<% 
 	}
 			         %>
+</body>
