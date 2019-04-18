@@ -40,7 +40,7 @@
             // fileName1을 utf-8로 인코딩한다.
             var fName = encodeURIComponent("<%=fileName1%>");
 					// 인코딩된 파일이름을 쿼리문자열에 포함시켜 다운로드 페이지로 이동
-					window.location.href = "backupfileDownload.jsp?file_name=" + fName;
+					window.location.href = "C:/Muhanbit_Program/CMP/WebContent/backup/backupfileDownload.jsp?file_name=" + fName;
 				});
 	</script>
 	</div>

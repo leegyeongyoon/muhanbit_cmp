@@ -25,7 +25,7 @@
      
     // 저장되어 있는 폴더경로/저장된 파일명 으로 풀 path를 만들어준다.
         // 자바에서는 \를 표시하기 위해서는 \를 한번 더 붙여주기 때문에 \\로 해준다.
-    String sFilePath = sDownPath + "\\" + fileName; // ex)c:\\uploadPath\\image.jpg
+    String sFilePath = sDownPath + fileName; // ex)c:\\uploadPath\\image.jpg
     System.out.println("sFilePath : " + sFilePath);
     // 풀 path에 대한걸 파일 객체로 인식시킨다.
     File outputFile = new File(sFilePath);

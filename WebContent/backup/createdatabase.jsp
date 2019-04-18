@@ -16,7 +16,7 @@
 								pstmt.executeUpdate();
 								pstmt.close();
 								conn.close();	
-								response.sendRedirect("datarestore.jsp");
+								response.sendRedirect("C:/Muhanbit_Program/CMP/WebContent/backup/createdatabase.jsp");
 						%>
 </body>
 </html>

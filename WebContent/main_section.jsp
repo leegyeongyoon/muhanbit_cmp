@@ -54,7 +54,7 @@
 					</h3>
 					<p>장비 관리 시스템으로 이동하고 싶으신가요? 아래에 버튼을 눌러서 이동해주세요</p>
 					<div class="clearfix space10"></div>
-					<a href="#" class="button btn-lg">바로가기</a>
+					<a href="http://192.168.100.125:8181/inventory_control_project/index.jsp" class="button btn-lg">바로가기</a>
 				</div>
 			</div>
 			<div class="clearfix space90"></div>
